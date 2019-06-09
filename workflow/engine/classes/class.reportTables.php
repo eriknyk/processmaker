@@ -240,7 +240,7 @@ class ReportTables
                                         if (! isset( $aData[$aField['sFieldName']] )) {
                                             $aData[$aField['sFieldName']] = '';
                                         }
-                                        $sQuery .= ",'" . (isset( $aData[$aField['sFieldName']] ) ? @mysql_real_escape_string( $aData[$aField['sFieldName']] ) : '') . "'";
+                                        $sQuery .= ",'" . (isset( $aData[$aField['sFieldName']] ) ? @mysqli_real_escape_string( $aData[$aField['sFieldName']] ) : '') . "'";
                                         break;
                                     case 'date':
                                         $value = (isset( $aData[$aField['sFieldName']] ) && trim( $aData[$aField['sFieldName']] )) != '' ? "'" . $aData[$aField['sFieldName']] . "'" : 'NULL';
@@ -269,7 +269,7 @@ class ReportTables
                                                 if (! isset( $aGridRow[$aField['sFieldName']] )) {
                                                     $aGridRow[$aField['sFieldName']] = '';
                                                 }
-                                                $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? mysql_real_escape_string( $aGridRow[$aField['sFieldName']] ) : '') . "'";
+                                                $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? mysqli_real_escape_string( $aGridRow[$aField['sFieldName']] ) : '') . "'";
                                                 break;
                                             case 'date':
                                                 $value = (isset( $aGridRow[$aField['sFieldName']] ) && trim( $aGridRow[$aField['sFieldName']] )) != '' ? "'" . $aGridRow[$aField['sFieldName']] . "'" : 'NULL';
@@ -316,7 +316,7 @@ class ReportTables
                                         if (! isset( $aData[$aField['sFieldName']] )) {
                                             $aData[$aField['sFieldName']] = '';
                                         }
-                                        $sQuery .= ",'" . (isset( $aData[$aField['sFieldName']] ) ? mysql_real_escape_string( $aData[$aField['sFieldName']] ) : '') . "'";
+                                        $sQuery .= ",'" . (isset( $aData[$aField['sFieldName']] ) ? mysqli_real_escape_string( $aData[$aField['sFieldName']] ) : '') . "'";
                                         break;
                                     case 'date':
                                         $sQuery .= ",'" . (isset( $aData[$aField['sFieldName']] ) ? $aData[$aField['sFieldName']] : '') . "'";
@@ -344,7 +344,7 @@ class ReportTables
                                                 if (! isset( $aGridRow[$aField['sFieldName']] )) {
                                                     $aGridRow[$aField['sFieldName']] = '';
                                                 }
-                                                $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? mysql_real_escape_string( $aGridRow[$aField['sFieldName']] ) : '') . "'";
+                                                $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? mysqli_real_escape_string( $aGridRow[$aField['sFieldName']] ) : '') . "'";
                                                 break;
                                             case 'date':
                                                 $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? $aGridRow[$aField['sFieldName']] : '') . "'";
@@ -615,7 +615,7 @@ class ReportTables
                                             if(is_array($aFields[$aField['sFieldName']])){
                                                 $sQuery .= "'" . (isset( $aFields[$aField['sFieldName']] ) ? $aFields[$aField['sFieldName']][0] : '') . "',";
                                             }else{
-                                                $sQuery .= '\'' . ((isset($aFields[$aField['sFieldName']]))? @mysql_real_escape_string($aFields[$aField['sFieldName']]) : '') . '\',';
+                                                $sQuery .= '\'' . ((isset($aFields[$aField['sFieldName']]))? @mysqli_real_escape_string($aFields[$aField['sFieldName']]) : '') . '\',';
                                             }
                                             break;
                                         case 'date':
@@ -648,7 +648,7 @@ class ReportTables
                                             if (! isset( $aFields[$aField['sFieldName']] )) {
                                                 $aFields[$aField['sFieldName']] = '';
                                             }
-                                            $sQuery .= ",'" . (isset( $aFields[$aField['sFieldName']] ) ? mysql_real_escape_string( $aFields[$aField['sFieldName']] ) : '') . "'";
+                                            $sQuery .= ",'" . (isset( $aFields[$aField['sFieldName']] ) ? mysqli_real_escape_string( $aFields[$aField['sFieldName']] ) : '') . "'";
                                             break;
                                         case 'date':
                                             $mysqlDate = (isset( $aFields[$aField['sFieldName']] ) ? $aFields[$aField['sFieldName']] : '');
@@ -689,7 +689,7 @@ class ReportTables
                                                     if (! isset( $aGridRow[$aField['sFieldName']] )) {
                                                         $aGridRow[$aField['sFieldName']] = '';
                                                     }
-                                                    $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? mysql_real_escape_string( $aGridRow[$aField['sFieldName']] ) : '') . "'";
+                                                    $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? mysqli_real_escape_string( $aGridRow[$aField['sFieldName']] ) : '') . "'";
                                                     break;
                                                 case 'date':
                                                     $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? $aGridRow[$aField['sFieldName']] : '') . "'";
@@ -724,7 +724,7 @@ class ReportTables
                                             if (! isset( $aFields[$aField['sFieldName']] )) {
                                                 $aFields[$aField['sFieldName']] = '';
                                             }
-                                            $sQuery .= "'" . (isset( $aFields[$aField['sFieldName']] ) ? mysql_real_escape_string( $aFields[$aField['sFieldName']] ) : '') . "',";
+                                            $sQuery .= "'" . (isset( $aFields[$aField['sFieldName']] ) ? mysqli_real_escape_string( $aFields[$aField['sFieldName']] ) : '') . "',";
                                             break;
                                         case 'date':
                                             $sQuery .= "'" . (isset( $aFields[$aField['sFieldName']] ) ? $aFields[$aField['sFieldName']] : '') . "',";
@@ -750,7 +750,7 @@ class ReportTables
                                             if (! isset( $aFields[$aField['sFieldName']] )) {
                                                 $aFields[$aField['sFieldName']] = '';
                                             }
-                                            $sQuery .= ",'" . (isset( $aFields[$aField['sFieldName']] ) ? mysql_real_escape_string( $aFields[$aField['sFieldName']] ) : '') . "'";
+                                            $sQuery .= ",'" . (isset( $aFields[$aField['sFieldName']] ) ? mysqli_real_escape_string( $aFields[$aField['sFieldName']] ) : '') . "'";
                                             break;
                                         case 'date':
                                             $sQuery .= ",'" . (isset( $aFields[$aField['sFieldName']] ) ? $aFields[$aField['sFieldName']] : '') . "'";
@@ -781,7 +781,7 @@ class ReportTables
                                                 if (! isset( $aGridRow[$aField['sFieldName']] )) {
                                                     $aGridRow[$aField['sFieldName']] = '';
                                                 }
-                                                $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? mysql_real_escape_string( $aGridRow[$aField['sFieldName']] ) : '') . "'";
+                                                $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? mysqli_real_escape_string( $aGridRow[$aField['sFieldName']] ) : '') . "'";
                                                 break;
                                             case 'date':
                                                 $sQuery .= ",'" . (isset( $aGridRow[$aField['sFieldName']] ) ? $aGridRow[$aField['sFieldName']] : '') . "'";

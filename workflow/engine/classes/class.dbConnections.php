@@ -219,7 +219,7 @@ class dbConnections
     {
         $servicesAvailables = Array ();
 
-        $dbServices = Array ('mysql' => Array ('id' => 'mysql','command' => 'mysql_connect','name' => 'MySql'
+        $dbServices = Array ('mysql' => Array ('id' => 'mysql','command' => 'mysqli_connect','name' => 'MySql'
         ),'pgsql' => Array ('id' => 'pgsql','command' => 'pg_connect','name' => 'PostgreSql'
         ),'mssql' => Array ('id' => 'mssql','command' => 'mssql_connect','name' => 'Microsoft SQL Server'
         ),'oracle' => Array ('id' => 'oracle','command' => 'oci_connect','name' => 'Oracle'

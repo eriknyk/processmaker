@@ -102,7 +102,7 @@ class DBConnection
         $this->type = $type;
         //print "<hr>$type $strServer, $strUser, $strPwd, $strDB <hr>";
         if ($type == "mysql") {
-            $dsn = "mysql://$strUser:$strPwd@$strServer/$strDB";
+            $dsn = "mysqli://$strUser:$strPwd@$strServer/$strDB";
         }
         if ($type == "pgsql") {
             //$dsn = "pgsql://postgres@$strServer/$strDB";

@@ -25,7 +25,7 @@ function lookup($target)
 		$dbServices = Array(
 			'mysql' => Array(
                 'id'        => 'mysql', 
-                'command'   => 'mysql_connect',
+                'command'   => 'mysqli_connect',
                 'name'      => 'MySql'
             ),
 			'pgsql' => Array(

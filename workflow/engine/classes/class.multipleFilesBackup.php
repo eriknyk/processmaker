@@ -199,11 +199,11 @@ class multipleFilesBackup
             list ($dbHost, $dbUser, $dbPass) = @explode( SYSTEM_HASH, G::decrypt( HASH_INSTALLATION, SYSTEM_HASH ) );
 
             CLI::logging( "> Connecting to system database in '$dbHost'\n" );
-            $link = mysql_connect( $dbHost, $dbUser, $dbPass );
-            @mysql_query( "SET NAMES 'utf8';" );
-            @mysql_query( "SET FOREIGN_KEY_CHECKS=0;" );
+            $link = mysqli_connect( $dbHost, $dbUser, $dbPass );
+            @mysqli_query( $link, "SET NAMES 'utf8';" );
+            @mysqli_query( $link, "SET FOREIGN_KEY_CHECKS=0;" );
             if (! $link) {
-                throw new Exception( 'Could not connect to system database: ' . mysql_error() );
+                throw new Exception( 'Could not connect to system database: ' . mysqli_error($link) );
             }
             
             if (strpos($metadata->DB_RBAC_NAME, 'rb_') === false) {
@@ -223,7 +223,7 @@ class multipleFilesBackup
                 $workspace->createDBUser( $dbName, $db->pass, "%", $dbName );
             }
             $workspace->upgradeCacheView( false );
-            mysql_close( $link );
+            mysqli_close( $link );
 
         }
         CLI::logging( "Removing temporary files\n" );

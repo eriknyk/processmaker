@@ -54,7 +54,7 @@ class database extends database_base
         $this->sUser = $sUser;
         $this->sPass = $sPass;
         $this->sDataBase = $sDataBase;
-        $this->oConnection = @mysql_connect( $sServer, $sUser, $sPass ) || null;
+        $this->oConnection = @mysqli_connect( $sServer, $sUser, $sPass ) || null;
         $this->sQuoteCharacter = '`';
         $this->nullString = 'null';
     }
@@ -511,9 +511,9 @@ class database extends database_base
 
         try {
             if ($this->oConnection) {
-                @mysql_select_db( $this->sDataBase );
+                @mysqli_select_db( $this->sDataBase );
 
-                return @mysql_query( $sQuery );
+                return @mysqli_query( $sQuery );
             } else {
                 throw new Exception( 'invalid connection to database ' . $this->sDataBase );
             }
@@ -531,7 +531,7 @@ class database extends database_base
      */
     public function countResults ($oDataset)
     {
-        return @mysql_num_rows( $oDataset );
+        return @mysqli_num_rows( $oDataset );
     }
 
     /**
@@ -542,7 +542,7 @@ class database extends database_base
      */
     public function getRegistry ($oDataset)
     {
-        return @mysql_fetch_array( $oDataset, $this->iFetchType );
+        return @mysqli_fetch_array( $oDataset, $this->iFetchType );
     }
 
     /**
@@ -552,7 +552,7 @@ class database extends database_base
      */
     public function close ()
     {
-        @mysql_close( $this->oConnection );
+        @mysqli_close( $this->oConnection );
     }
 
     public function generateInsertSQL ($table, $data)
@@ -565,11 +565,11 @@ class database extends database_base
                 switch ($field['type']) {
                     case 'text':
                     case 'date':
-                        $values[] = "'" . mysql_real_escape_string( $field['value'] ) . "'";
+                        $values[] = "'" . mysqli_real_escape_string($this->oConnection, $field['value'] ) . "'";
                         break;
                     case 'int':
                     default:
-                        $values[] = mysql_real_escape_string( $field['value'] );
+                        $values[] = mysqli_real_escape_string($this->oConnection, $field['value'] );
                         break;
                 }
             } else {
@@ -591,11 +591,11 @@ class database extends database_base
                 switch ($field['type']) {
                     case 'text':
                     case 'date':
-                        $fields[] = $this->putQuotes( $field['field'] ) . " = '" . mysql_real_escape_string( $field['value'] ) . "'";
+                        $fields[] = $this->putQuotes( $field['field'] ) . " = '" . mysqli_real_escape_string($this->oConnection, $field['value'] ) . "'";
                         break;
                     case 'int':
                     default:
-                        $fields[] = $this->putQuotes( $field['field'] ) . " = " . mysql_real_escape_string( $field['value'] );
+                        $fields[] = $this->putQuotes( $field['field'] ) . " = " . mysqli_real_escape_string($this->oConnection, $field['value'] );
                         break;
                 }
             } else {
@@ -619,11 +619,11 @@ class database extends database_base
                     switch ($field['type']) {
                         case 'text':
                         case 'date':
-                            $where[] = $this->putQuotes( $field['field'] ) . " = '" . mysql_real_escape_string( $field['value'] ) . "'";
+                            $where[] = $this->putQuotes( $field['field'] ) . " = '" . mysqli_real_escape_string($this->oConnection, $field['value'] ) . "'";
                             break;
                         case 'int':
                         default:
-                            $where[] = $this->putQuotes( $field['field'] ) . " = " . mysql_real_escape_string( $field['value'] );
+                            $where[] = $this->putQuotes( $field['field'] ) . " = " . mysqli_real_escape_string($this->oConnection, $field['value'] );
                             break;
                     }
                 } else {
@@ -645,11 +645,11 @@ class database extends database_base
                     switch ($field['type']) {
                         case 'text':
                         case 'date':
-                            $where[] = $this->putQuotes( $field['field'] ) . " = '" . mysql_real_escape_string( $field['value'] ) . "'";
+                            $where[] = $this->putQuotes( $field['field'] ) . " = '" . mysqli_real_escape_string($this->oConnection, $field['value'] ) . "'";
                             break;
                         case 'int':
                         default:
-                            $where[] = $this->putQuotes( $field['field'] ) . " = " . mysql_real_escape_string( $field['value'] );
+                            $where[] = $this->putQuotes( $field['field'] ) . " = " . mysqli_real_escape_string($this->oConnection, $field['value'] );
                             break;
                     }
                 } else {
@@ -866,10 +866,10 @@ class database extends database_base
     public function getServerVersion ($driver, $dbIP, $dbPort, $dbUser, $dbPasswd, $dbSourcename)
     {
 
-        if ($link = @mysql_connect( $dbIP, $dbUser, $dbPasswd )) {
-            $v = @mysql_get_server_info();
+        if ($link = @mysqli_connect( $dbIP, $dbUser, $dbPasswd )) {
+            $v = @mysqli_get_server_info($link);
         } else {
-            throw new Exception( @mysql_error( $link ) );
+            throw new Exception( @mysqli_error( $link ) );
         }
         return (isset( $v )) ? $v : 'none';
 
@@ -913,9 +913,9 @@ class database extends database_base
         $filter = new InputFilter();
         $DB_NAME = $filter->validateInput(DB_NAME);
         $bExists = true;
-        $oConnection = mysql_connect( DB_HOST, DB_USER, DB_PASS );
-        mysql_select_db( $DB_NAME );
-        $oDataset = mysql_query( 'SELECT COUNT(*) FROM REPORT_TABLE' ) || ($bExists = false);
+        $oConnection = mysqli_connect( DB_HOST, DB_USER, DB_PASS );
+        mysqli_select_db($oConnection, $DB_NAME );
+        $oDataset = mysqli_query($oConnection, 'SELECT COUNT(*) FROM REPORT_TABLE' ) || ($bExists = false);
 
         return $bExists;
     }
@@ -934,10 +934,10 @@ class database extends database_base
      */
     public function tableExists ($tableName, $database)
     {
-        @mysql_select_db( $database );
+        @mysqli_select_db( $database );
         $tables = array ();
-        $tablesResult = mysql_query( "SHOW TABLES FROM $database;" );
-        while ($row = @mysql_fetch_row( $tablesResult )) {
+        $tablesResult = mysqli_query($this->oConnection, "SHOW TABLES FROM $database;" );
+        while ($row = @mysqli_fetch_row( $tablesResult )) {
             $tables[] = $row[0];
         }
         if (in_array( $tableName, $tables )) {

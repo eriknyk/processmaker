@@ -46,29 +46,29 @@ function testConnection($type, $server, $user, $passwd, $port = 'none', $dbName 
                         $server = $filter->validateInput($server);
                         $user = $filter->validateInput($user);
                         $passwd = $filter->validateInput($passwd);
-                        $connDatabase = @mysql_connect($server, $user, $passwd);
+                        $connDatabase = @mysqli_connect($server, $user, $passwd);
                         $dbNameTest = "PROCESSMAKERTESTDC";
                         $dbNameTest = $filter->validateInput($dbNameTest, 'nosql');
                         $query = "CREATE DATABASE %s";
                         $query = $filter->preventSqlInjection($query, array($dbNameTest), $connDatabase);
-                        $db = @mysql_query($query, $connDatabase);
+                        $db = @mysqli_query($connDatabase, $query);
                         $success = false;
                         if (!$db) {
-                            $message = mysql_error();;
+                            $message = mysqli_error($connDatabase);
                         } else {
                             $usrTest = "wfrbtest";
                             $chkG = "GRANT ALL PRIVILEGES ON `%s`.* TO %s@'%%' IDENTIFIED BY 'sample' WITH GRANT OPTION";
                             $chkG = $filter->preventSqlInjection($chkG, array($dbNameTest, $usrTest), $connDatabase);
-                            $ch = @mysql_query($chkG, $connDatabase);
+                            $ch = @mysqli_query($connDatabase, $chkG);
                             if (!$ch) {
-                                $message = mysql_error();
+                                $message = mysqli_error($connDatabase);
                             } else {
                                 $sqlCreateUser = "CREATE USER '%s'@'%%' IDENTIFIED BY '%s'";
                                 $user = $filter->validateInput($user, 'nosql');
                                 $sqlCreateUser = $filter->preventSqlInjection($sqlCreateUser, array($user . "_usertest", "sample"), $connDatabase);
-                                $result = @mysql_query($sqlCreateUser, $connDatabase);
+                                $result = @mysqli_query($connDatabase, $sqlCreateUser);
                                 if (!$result) {
-                                    $message = mysql_error();
+                                    $message = mysqli_error($connDatabase);
                                 } else {
                                     $success = true;
                                     $message = G::LoadTranslation('ID_SUCCESSFUL_CONNECTION');
@@ -76,17 +76,17 @@ function testConnection($type, $server, $user, $passwd, $port = 'none', $dbName 
                                 $sqlDropUser = "DROP USER '%s'@'%%'";
                                 $user = $filter->validateInput($user, 'nosql');
                                 $sqlDropUser = $filter->preventSqlInjection($sqlDropUser, array($user . "_usertest"), $connDatabase);
-                                @mysql_query($sqlDropUser, $connDatabase);
+                                @mysqli_query($connDatabase, $sqlDropUser);
 
                                 $sqlDropUser = "DROP USER %s@'%%'";
                                 $usrTest = $filter->validateInput($usrTest, 'nosql');
                                 $sqlDropUser = $filter->preventSqlInjection($sqlDropUser, array($usrTest), $connDatabase);
-                                @mysql_query($sqlDropUser, $connDatabase);
+                                @mysqli_query($connDatabase, $sqlDropUser);
                             }
                             $sqlDropDb = "DROP DATABASE %s";
                             $dbNameTest = $filter->validateInput($dbNameTest, 'nosql');
                             $sqlDropDb = $filter->preventSqlInjection($sqlDropDb, array($dbNameTest), $connDatabase);
-                            @mysql_query($sqlDropDb, $connDatabase);
+                            @mysqli_query($connDatabase, $sqlDropDb);
                         }
                         return array($success, ($message != "") ? $message : $Server->error);
                     } else {

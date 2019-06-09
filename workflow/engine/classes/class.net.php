@@ -234,12 +234,12 @@ class NET
             switch ($pDbDriver) {
                 case 'mysql':
                     if ($this->db_passwd == '') {
-                        $link = @mysql_connect( $this->ip . (($this->db_port != '') && ($this->db_port != 0) ? ':' . $this->db_port : ''), $this->db_user );
+                        $link = @mysqli_connect( $this->ip . (($this->db_port != '') && ($this->db_port != 0) ? ':' . $this->db_port : ''), $this->db_user );
                     } else {
-                        $link = @mysql_connect( $this->ip . (($this->db_port != '') && ($this->db_port != 0) ? ':' . $this->db_port : ''), $this->db_user, $this->db_passwd );
+                        $link = @mysqli_connect( $this->ip . (($this->db_port != '') && ($this->db_port != 0) ? ':' . $this->db_port : ''), $this->db_user, $this->db_passwd );
                     }
                     if ($link) {
-                        if (@mysql_ping( $link )) {
+                        if (@mysqli_ping( $link )) {
                             $stat->status = 'SUCCESS';
                             $this->errstr = "";
                             $this->errno = 0;
@@ -358,16 +358,16 @@ class NET
         if (isset($this->db_user) && (isset($this->db_passwd) || $this->db_passwd == "") && (isset($this->db_sourcename) || $flagTns == 1)) {
             switch ($pDbDriver) {
                 case 'mysql':
-                    $link = @mysql_connect( $this->ip . (($this->db_port != '') && ($this->db_port != 0) ? ':' . $this->db_port : ''), $this->db_user, $this->db_passwd );
-                    $db = @mysql_select_db( $this->db_sourcename );
+                    $link = @mysqli_connect( $this->ip . (($this->db_port != '') && ($this->db_port != 0) ? ':' . $this->db_port : ''), $this->db_user, $this->db_passwd );
+                    $db = @mysqli_select_db($link, $this->db_sourcename );
                     if ($link) {
                         if ($db) {
-                            $result = @mysql_query( "show tables;" );
+                            $result = @mysqli_query($link, "show tables;" );
                             if ($result) {
                                 $stat->status = 'SUCCESS';
                                 $this->errstr = "";
                                 $this->errno = 0;
-                                @mysql_free_result( $result );
+                                @mysqli_free_result( $result );
                             } else {
                                 $this->error = "the user $this->db_user doesn't have privileges to run queries!";
                                 $this->errstr = "NET::MYSQL->Test query failed";

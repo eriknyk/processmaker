@@ -478,7 +478,7 @@ class Installer
     private function run_query($query, $description = null)
     {
         $result = @mysqli_query($this->connection_database, $query);
-        $error = ($result) ? false : mysql_error();
+        $error = ($result) ? false : mysqli_error($this->connection_database);
         $this->log(($description ? $description : $query) . " => " . (($error) ? $error : "OK") . "\n", $error);
     }
 
@@ -696,7 +696,7 @@ class Installer
                 $rt['connection'] = true;
 
                 $dbNameTest = "PROCESSMAKERTESTDC";
-                $db = @mysql_query("CREATE DATABASE " . $dbNameTest, $this->connection_database);
+                $db = @mysqli_query($this->connection_database, "CREATE DATABASE " . $dbNameTest);
                 if (!$db) {
                     $this->cc_status = 3;
                     $rt['grant'] = 3;
@@ -707,7 +707,7 @@ class Installer
                     //@mysql_drop_db("processmaker_testGA");
                     $usrTest = "wfrbtest";
                     $chkG = "GRANT ALL PRIVILEGES ON `" . $dbNameTest . "`.* TO " . $usrTest . "@'%' IDENTIFIED BY 'sample' WITH GRANT OPTION";
-                    $ch = @mysql_query($chkG, $this->connection_database);
+                    $ch = @mysqli_query($this->connection_database, $chkG);
                     if (!$ch) {
                         $this->cc_status = 2;
                         $rt['grant'] = 2;
@@ -715,11 +715,11 @@ class Installer
                         $rt['message'] = "Successful connection";
                     } else {
                         $this->cc_status = 1;
-                        @mysql_query("DROP USER " . $usrTest . "@'%'", $this->connection_database);
+                        @mysqli_query($this->connection_database, "DROP USER " . $usrTest . "@'%'");
                         $rt['grant'] = 1;
                         $rt['message'] = "Successful connection";
                     }
-                    @mysql_query("DROP DATABASE " . $dbNameTest, $this->connection_database);
+                    @mysqli_query($this->connection_database,  "DROP DATABASE " . $dbNameTest);
                 }
                 //        var_dump($wf,$rb,$rp);
             }

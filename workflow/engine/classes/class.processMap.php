@@ -854,7 +854,12 @@ class processMap
             }
 
             global $_DBArray;
-            $_DBArray = (isset($_SESSION['_DBArray']) ? $_SESSION['_DBArray'] : '');
+            $_DBArray = (isset($_SESSION['_DBArray']) ? $_SESSION['_DBArray'] : []);
+
+            if (!is_array($_DBArray)) {
+                $_DBArray = [];
+            }
+
             $_DBArray['steps'] = $aSteps;
             $_SESSION['_DBArray'] = $_DBArray;
             G::LoadClass('ArrayPeer');

@@ -46,6 +46,7 @@ class Content extends BaseContent
     public $rowsUnchanged;
     public $rowsClustered;
     public $langsAsoc;
+    public $link;
     /*
      * Load the content row specified by the parameters:
      * @param string $sUID
@@ -365,18 +366,19 @@ class Content extends BaseContent
         $workSpace = new workspaceTools( $workSpace );
         $workSpace->getDBInfo();
 
-        $link = @mysql_pconnect( $workSpace->dbHost, $workSpace->dbUser, $workSpace->dbPass) or die( "Could not connect" );
+        $link = @mysqli_connect( $workSpace->dbHost, $workSpace->dbUser, $workSpace->dbPass) or die( "Could not connect" );
+        $this->link = $link;
 
-        mysql_select_db( $workSpace->dbName, $link );
-        mysql_query( "SET NAMES 'utf8';" );
-        mysql_query( "SET FOREIGN_KEY_CHECKS=0;" );
-        mysql_query( 'SET OPTION SQL_BIG_SELECTS=1' );
-        $result = mysql_unbuffered_query( $sql, $link );
+        mysqli_select_db( $workSpace->dbName, $link );
+        mysqli_query($link, "SET NAMES 'utf8';" );
+        mysqli_query($link, "SET FOREIGN_KEY_CHECKS=0;" );
+        mysqli_query($link, 'SET OPTION SQL_BIG_SELECTS=1' );
+        $result = mysqli_query( $link, $sql );
         $list = array ();
         $default = array ();
         $sw = array ('CON_ID' => '','CON_CATEGORY' => '','CON_PARENT' => ''
         );
-        while ($row = mysql_fetch_assoc( $result )) {
+        while ($row = mysqli_fetch_assoc( $result )) {
             if ($sw['CON_ID'] == $row['CON_ID'] && $sw['CON_CATEGORY'] == $row['CON_CATEGORY'] && $sw['CON_PARENT'] == $row['CON_PARENT']) {
                 $list[] = $row;
             } else {
@@ -407,7 +409,7 @@ class Content extends BaseContent
         } else {
             $this->rowsUnchanged = $this->rowsUnchanged + count( $langs );
         }
-        mysql_free_result( $result );
+        mysqli_free_result( $result );
         $total = $this->rowsProcessed + $this->rowsInserted;
 
         $statement = $connection->prepareStatement( "REPLACE INTO CONTENT
@@ -456,7 +458,7 @@ class Content extends BaseContent
 
     public function fastInsertContent ($ConCategory, $ConParent, $ConId, $ConLang, $ConValue)
     {
-        $ConValue = mysql_real_escape_string( $ConValue );
+        $ConValue = mysqli_real_escape_string( $this->link, $ConValue );
         $connection = Propel::getConnection( 'workflow' );
         $statement = $connection->prepareStatement( "INSERT INTO CONTENT_BACKUP (
         CON_CATEGORY, CON_PARENT, CON_ID , CON_LANG, CON_VALUE)
