@@ -68,7 +68,7 @@ try {
             $tar->extractList( $listFiles,  PATH_PLUGINS . 'data');
             $tar->extractList( $licenseName, PATH_PLUGINS);
 
-            $pluginRegistry = &PMPluginRegistry::getSingleton();
+            $pluginRegistry = PMPluginRegistry::getSingleton();
             $autoPlugins = glob(PATH_PLUGINS . "data/enterprise/data/*.tar");
             $autoPluginsA = array();
 
@@ -106,12 +106,12 @@ try {
 
             require_once ('classes/model/AddonsStore.php');
             AddonsStore::checkLicenseStore();
-            $licenseManager = &pmLicenseManager::getSingleton();
+            $licenseManager = pmLicenseManager::getSingleton();
             AddonsStore::updateAll(false);
 
             $message = G::loadTranslation( 'ID_ENTERPRISE_INSTALLED') . ' ' . G::loadTranslation( 'ID_LOG_AGAIN');
             G::SendMessageText($message, "INFO");
-            $licenseManager = &pmLicenseManager::getSingleton();
+            $licenseManager = pmLicenseManager::getSingleton();
             die('<script type="text/javascript">parent.parent.location = "../login/login";</script>');
         }
     }
@@ -142,7 +142,7 @@ try {
             $tar->extractList( $listFiles,  PATH_PLUGINS . 'data');
             $tar->extractList( $licenseName, PATH_PLUGINS);
 
-            $pluginRegistry = &PMPluginRegistry::getSingleton();
+            $pluginRegistry = PMPluginRegistry::getSingleton();
             $autoPlugins = glob(PATH_PLUGINS . "data/plugins/*.tar");
             $autoPluginsA = array();
 
@@ -181,12 +181,12 @@ try {
 
             require_once ('classes/model/AddonsStore.php');
             AddonsStore::checkLicenseStore();
-            $licenseManager = &pmLicenseManager::getSingleton();
+            $licenseManager = pmLicenseManager::getSingleton();
             AddonsStore::updateAll(false);
 
             $message = G::loadTranslation( 'ID_ENTERPRISE_INSTALLED') . ' ' . G::loadTranslation( 'ID_LOG_AGAIN');
             G::SendMessageText($message, "INFO");
-            $licenseManager = &pmLicenseManager::getSingleton();
+            $licenseManager = pmLicenseManager::getSingleton();
             die('<script type="text/javascript">parent.parent.location = "../login/login";</script>');
         }
     }
@@ -223,7 +223,7 @@ try {
         file_put_contents($pathFileFlag, 'New Enterprise');
     }
 
-    $oPluginRegistry = & PMPluginRegistry::getSingleton();
+    $oPluginRegistry = PMPluginRegistry::getSingleton();
     $pluginFile = $sClassName . '.php';
 
     if ($bMainFile && $bClassFile) {

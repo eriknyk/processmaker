@@ -135,7 +135,7 @@ class pmLicenseManager
             if ($this->result=="OK") {
                 //Disable
                 if (file_exists ( PATH_PLUGINS . 'enterprise/data/data' )) {
-                    $oPluginRegistry = & PMPluginRegistry::getSingleton ();
+                    $oPluginRegistry = PMPluginRegistry::getSingleton ();
                     $aPlugins = unserialize ( trim ( file_get_contents ( PATH_PLUGINS . 'enterprise/data/data' ) ) );
                     foreach ($aPlugins as $aPlugin) {
                         $sClassName = substr ( $aPlugin ['sFilename'], 0, strpos ( $aPlugin ['sFilename'], '-' ) );
@@ -148,7 +148,7 @@ class pmLicenseManager
                 }
 
                 //Enable
-                $oPluginRegistry = &PMPluginRegistry::getSingleton();
+                $oPluginRegistry = PMPluginRegistry::getSingleton();
                 $aPlugins = unserialize(trim(file_get_contents(PATH_PLUGINS . "enterprise/data/default")));
 
                 foreach ($aPlugins as $aPlugin) {
@@ -184,7 +184,7 @@ class pmLicenseManager
                 }
             } else {
                 //Disable
-                $oPluginRegistry = & PMPluginRegistry::getSingleton ();
+                $oPluginRegistry = PMPluginRegistry::getSingleton ();
                 $aPlugins = unserialize ( trim ( file_get_contents ( PATH_PLUGINS . 'enterprise/data/default' ) ) );
                 foreach ($aPlugins as $aPlugin) {
                     $sClassName = substr ( $aPlugin ['sFilename'], 0, strpos ( $aPlugin ['sFilename'], '-' ) );

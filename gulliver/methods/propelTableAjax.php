@@ -43,7 +43,7 @@
         $aux = explode ( PATH_SEP, G::getUIDName( $ntable->filterForm_Id ) );
         //check if G_PLUGIN_CLASS is defined, because publisher can be called without an environment
         if ( count($aux) == 2 && defined ( 'G_PLUGIN_CLASS' ) ) {
-          $oPluginRegistry =& PMPluginRegistry::getSingleton();
+          $oPluginRegistry =PMPluginRegistry::getSingleton();
           if ( $oPluginRegistry->isRegisteredFolder($aux[0]) ) {
             $sPath = PATH_PLUGINS;
           }

@@ -6,7 +6,7 @@ require_once PATH_CORE . "classes" . PATH_SEP . "class.enterpriseUtils.php";
 
 AddonsStore::checkLicenseStore();
 
-$licenseManager = &pmLicenseManager::getSingleton();
+$licenseManager = pmLicenseManager::getSingleton();
 $oHeadPublisher = &headPublisher::getSingleton();
 
 if (isset($licenseManager->date) && is_array($licenseManager->date)) {

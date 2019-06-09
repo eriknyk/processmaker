@@ -112,5 +112,5 @@ class {className}Plugin extends PMPlugin
   <!-- END BLOCK : dashboard -->
 }
 
-$oPluginRegistry = &PMPluginRegistry::getSingleton();
+$oPluginRegistry = PMPluginRegistry::getSingleton();
 $oPluginRegistry->registerPlugin("{className}", __FILE__);

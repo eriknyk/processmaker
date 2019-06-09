@@ -25,7 +25,7 @@ function searchSavedJob ($schUid)
 
 function pluginsList ()
 {
-    $oPluginRegistry = & PMPluginRegistry::getSingleton();
+    $oPluginRegistry = PMPluginRegistry::getSingleton();
     $activePluginsForCaseScheduler = $oPluginRegistry->getCaseSchedulerPlugins();
     $selectedPlugin = "";
     if ((isset( $_REQUEST['plg_uid'] )) && ($_REQUEST['plg_uid'] != "")) {
@@ -56,7 +56,7 @@ function pluginCaseSchedulerForm ()
     }
     $G_PUBLISH = new Publisher();
     $params = explode( "--", $_REQUEST['selectedOption'] );
-    $oPluginRegistry = & PMPluginRegistry::getSingleton();
+    $oPluginRegistry = PMPluginRegistry::getSingleton();
     $activePluginsForCaseScheduler = $oPluginRegistry->getCaseSchedulerPlugins();
 
     foreach ($activePluginsForCaseScheduler as $key => $caseSchedulerPluginDetail) {

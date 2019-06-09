@@ -68,5 +68,5 @@ class {className}Plugin extends PMPlugin {
 
 }
 
-$oPluginRegistry =& PMPluginRegistry::getSingleton();
+$oPluginRegistry =PMPluginRegistry::getSingleton();
 $oPluginRegistry->registerPlugin('{className}', __FILE__);

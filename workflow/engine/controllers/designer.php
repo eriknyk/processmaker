@@ -148,7 +148,7 @@ class Designer extends Controller
         $sourceCss = array();
         $sourceJs = array();
 
-        $pluginRegistry = &PMPluginRegistry::getSingleton();
+        $pluginRegistry = PMPluginRegistry::getSingleton();
         $srcPath = $pluginRegistry->getDesignerSourcePath();
 
         foreach ($srcPath as $key => $value) {

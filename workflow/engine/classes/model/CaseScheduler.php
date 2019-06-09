@@ -460,13 +460,13 @@ class CaseScheduler extends BaseCaseScheduler
                                 //Here we are loading all plugins registered
                                 //The singleton has a list of enabled plugins
                                 $sSerializedFile = PATH_DATA_SITE . "plugin.singleton";
-                                $oPluginRegistry = &PMPluginRegistry::getSingleton();
+                                $oPluginRegistry = PMPluginRegistry::getSingleton();
 
                                 if (file_exists($sSerializedFile)) {
                                     $oPluginRegistry->unSerializeInstance(file_get_contents($sSerializedFile));
                                 }
 
-                                $oPluginRegistry = &PMPluginRegistry::getSingleton();
+                                $oPluginRegistry = PMPluginRegistry::getSingleton();
                                 $activePluginsForCaseScheduler = $oPluginRegistry->getCaseSchedulerPlugins();
 
                                 foreach ($activePluginsForCaseScheduler as $key => $caseSchedulerPlugin) {
@@ -500,7 +500,7 @@ class CaseScheduler extends BaseCaseScheduler
                             $paramsAux = $params;
                             $paramsAux["executeTriggers"] = 1;
 
-                            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+                            $oPluginRegistry = PMPluginRegistry::getSingleton();
 
                             if ($oPluginRegistry->existsTrigger(PM_SCHEDULER_CREATE_CASE_BEFORE)) {
                                 $oPluginRegistry->executeTriggers(PM_SCHEDULER_CREATE_CASE_BEFORE, $paramsAux);

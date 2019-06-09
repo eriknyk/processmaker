@@ -730,7 +730,7 @@ class AppFolder extends BaseAppFolder
                     }
 
                     if (! empty( $row1["APP_DOC_PLUGIN"] )) {
-                        $pluginRegistry = &PMPluginRegistry::getSingleton();
+                        $pluginRegistry = PMPluginRegistry::getSingleton();
                         $pluginName = $row1["APP_DOC_PLUGIN"];
                         $fieldValue = "";
 

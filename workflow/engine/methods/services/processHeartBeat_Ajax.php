@@ -150,7 +150,7 @@
 //    if (file_exists( PATH_PLUGINS . "enterprise" . PATH_SEP . "VERSION" )) {
 //        $ee = trim( file_get_contents( PATH_PLUGINS . "enterprise" . PATH_SEP . "VERSION" ) );
 //    } else {
-//        $pluginRegistry = &PMPluginRegistry::getSingleton();
+//        $pluginRegistry = PMPluginRegistry::getSingleton();
 //        $details = $pluginRegistry->getPluginDetails( "enterprise.php" );
 //
 //        $ee = (! ($details == null)) ? $details->iVersion : null;
@@ -162,7 +162,7 @@
 //    $addonNumber = 0;
 //    $addonEnabledNumber = 0;
 //
-//    $pluginRegistry = &PMPluginRegistry::getSingleton();
+//    $pluginRegistry = PMPluginRegistry::getSingleton();
 //
 //    $arrayAddon = array ();
 //
@@ -202,7 +202,7 @@
 //    $licenseNumber = 0;
 //
 //    if (file_exists( PATH_PLUGINS . "enterprise" . PATH_SEP . "class.pmLicenseManager.php" ) && class_exists( 'enterprisePlugin' )) {
-//        $licenseManager = &pmLicenseManager::getSingleton();
+//        $licenseManager = pmLicenseManager::getSingleton();
 //
 //        preg_match( "/^license_(.*).dat$/", $licenseManager->file, $matches );
 //

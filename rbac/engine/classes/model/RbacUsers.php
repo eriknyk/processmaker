@@ -201,7 +201,7 @@ class RbacUsers extends BaseRbacUsers
     public function create($aData)
     {
         if (class_exists('PMPluginRegistry')) {
-            $pluginRegistry = & PMPluginRegistry::getSingleton();
+            $pluginRegistry = PMPluginRegistry::getSingleton();
             if ($pluginRegistry->existsTrigger(PM_BEFORE_CREATE_USER)) {
                 try {
                     $pluginRegistry->executeTriggers(PM_BEFORE_CREATE_USER, null);

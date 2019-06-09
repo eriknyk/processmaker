@@ -1658,7 +1658,7 @@ function uploadExternalDocument()
                 G::uploadFile($fileObj['tempName'], $sPathName, $sFileName); //upload
 
                 //Plugin Hook PM_UPLOAD_DOCUMENT for upload document
-                $oPluginRegistry =& PMPluginRegistry::getSingleton();
+                $oPluginRegistry =PMPluginRegistry::getSingleton();
                 if ($oPluginRegistry->existsTrigger (PM_UPLOAD_DOCUMENT) && class_exists ('uploadDocumentData')) {
                     $oData['APP_UID']   = $appId;
                     $documentData = new uploadDocumentData (

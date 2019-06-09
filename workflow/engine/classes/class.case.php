@@ -2196,7 +2196,7 @@ class Cases
                             $newValues['APP_TITLE'],
                             $sUsrUid
             );
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $oPluginRegistry->executeTriggers(PM_CREATE_CASE, $folderData);
         }
         $this->getExecuteTriggerProcess($sAppUid, 'CREATE');
@@ -3447,7 +3447,7 @@ class Cases
                     $_SESSION['PROCESS'], $sApplicationUID, $_SESSION['TASK'], $_SESSION['USER_LOGGED'], $ACTION = 'DELETE'
             );
             $listing = false;
-            $oPluginRegistry = & PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             if ($oPluginRegistry->existsTrigger(PM_CASE_DOCUMENT_LIST)) {
                 $folderData = new folderData(null, null, $sApplicationUID, null, $_SESSION['USER_LOGGED']);
                 $folderData->PMType = "INPUT";
@@ -3790,7 +3790,7 @@ class Cases
         }
 
         //Plugin Hook PM_UPLOAD_DOCUMENT for upload document
-        $pluginRegistry = &PMPluginRegistry::getSingleton();
+        $pluginRegistry = PMPluginRegistry::getSingleton();
 
         if ($pluginRegistry->existsTrigger(PM_UPLOAD_DOCUMENT) && class_exists("uploadDocumentData")) {
             $triggerDetail = $pluginRegistry->getTriggerInfo(PM_UPLOAD_DOCUMENT);
@@ -4507,12 +4507,12 @@ class Cases
         $confEnvSetting = $conf->getFormats();
 
         $listing = false;
-        $oPluginRegistry = & PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
         if ($oPluginRegistry->existsTrigger(PM_CASE_DOCUMENT_LIST)) {
             $folderData = new folderData(null, null, $sApplicationUID, null, $sUserUID);
             $folderData->PMType = "INPUT";
             $folderData->returnList = true;
-            //$oPluginRegistry      = & PMPluginRegistry::getSingleton();
+            //$oPluginRegistry      = PMPluginRegistry::getSingleton();
             $listing = $oPluginRegistry->executeTriggers(PM_CASE_DOCUMENT_LIST, $folderData);
         }
 
@@ -4817,12 +4817,12 @@ class Cases
 
         $confEnvSetting = $conf->getFormats();
         $listing = false;
-        $oPluginRegistry = & PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
         if ($oPluginRegistry->existsTrigger(PM_CASE_DOCUMENT_LIST)) {
             $folderData = new folderData(null, null, $sApplicationUID, null, $sUserUID);
             $folderData->PMType = "OUTPUT";
             $folderData->returnList = true;
-            //$oPluginRegistry = & PMPluginRegistry::getSingleton();
+            //$oPluginRegistry = PMPluginRegistry::getSingleton();
             $listing = $oPluginRegistry->executeTriggers(PM_CASE_DOCUMENT_LIST, $folderData);
         }
 

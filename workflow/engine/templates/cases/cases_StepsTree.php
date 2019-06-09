@@ -39,7 +39,7 @@
   G::LoadClass('pmScript');
   G::LoadClass('case');
 
-  $oPluginRegistry = &PMPluginRegistry::getSingleton();
+  $oPluginRegistry = PMPluginRegistry::getSingleton();
   $externalSteps   = $oPluginRegistry->getSteps();
 
   $oTree           = new Tree();
@@ -81,7 +81,7 @@
         $sType     = $oDocument->getInpDocFormNeeded(); break;
       case 'EXTERNAL':
         $stepTitle          = 'unknown ' . $aRow->getStepUidObj();
-        $oPluginRegistry = &PMPluginRegistry::getSingleton ();
+        $oPluginRegistry = PMPluginRegistry::getSingleton ();
         foreach ( $externalSteps as $key=>$val ) {
           if ( $val->sStepId == $aRow->getStepUidObj() ) {
             $stepTitle = $val->sStepTitle; //default title
@@ -195,7 +195,7 @@
       break;
       case 'EXTERNAL':
         $aActions = array ('action' => 'label' );
-        $oPluginRegistry = &PMPluginRegistry::getSingleton ();
+        $oPluginRegistry = PMPluginRegistry::getSingleton ();
         foreach ( $externalSteps as $key=>$val ) {
           if ( $val->sStepId == $aRow->getStepUidObj() ) {
             $stepTitle = $val->sStepTitle; //default title

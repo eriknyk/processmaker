@@ -15,7 +15,7 @@ class Main extends Controller
     public function __construct ()
     {
         G::LoadClass( 'memcached' );
-        $this->memcache = & PMmemcached::getSingleton( defined( 'SYS_SYS' ) ? SYS_SYS : '' );
+        $this->memcache = PMmemcached::getSingleton( defined( 'SYS_SYS' ) ? SYS_SYS : '' );
 
         define( 'ERROR_EXCEPTION', 1 );
         define( 'INFO_EXCEPTION', 3 );
@@ -45,7 +45,7 @@ class Main extends Controller
         $expireInLabel = '';
 
         require_once ("classes" . PATH_SEP . "class.pmLicenseManager.php");
-        $pmLicenseManager = &pmLicenseManager::getSingleton();
+        $pmLicenseManager = pmLicenseManager::getSingleton();
         $expireIn = $pmLicenseManager->getExpireIn();
         $expireInLabel = $pmLicenseManager->getExpireInLabel();
 
@@ -160,7 +160,7 @@ class Main extends Controller
             $this->memcache->delete( 'rbacSession' . session_id() );
         } else {
             // Execute SSO trigger
-            $pluginRegistry = & PMPluginRegistry::getSingleton();
+            $pluginRegistry = PMPluginRegistry::getSingleton();
             if (defined( 'PM_SINGLE_SIGN_ON' )) {
                 if ($pluginRegistry->existsTrigger( PM_SINGLE_SIGN_ON )) {
                     if ($pluginRegistry->executeTriggers( PM_SINGLE_SIGN_ON, null )) {
@@ -488,7 +488,7 @@ class Main extends Controller
             }
         }
         if (class_exists( 'PMPluginRegistry' )) {
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $logoPlugin = $oPluginRegistry->getCompanyLogo( $sCompanyLogo );
             if ($logoPlugin != '/images/processmaker2.logo2.png') {
                 $sCompanyLogo = $logoPlugin;

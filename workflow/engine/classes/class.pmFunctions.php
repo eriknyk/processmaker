@@ -1853,7 +1853,7 @@ function PMFGenerateOutputDocument ($outputID, $sApplication = null, $index = nu
 
     //Plugin Hook PM_UPLOAD_DOCUMENT for upload document
     //G::LoadClass('plugin');
-    $oPluginRegistry = & PMPluginRegistry::getSingleton();
+    $oPluginRegistry = PMPluginRegistry::getSingleton();
     if ($oPluginRegistry->existsTrigger( PM_UPLOAD_DOCUMENT ) && class_exists( 'uploadDocumentData' )) {
         $triggerDetail = $oPluginRegistry->getTriggerInfo( PM_UPLOAD_DOCUMENT );
         $aFields['APP_DOC_PLUGIN'] = $triggerDetail->sNamespace;

@@ -71,7 +71,7 @@ if ($RBAC->userCanAccess('PM_FOLDERS_VIEW') == 1) {
 
 
 //Load Other registered Dashboards (From plugins)
-$oPluginRegistry = & PMPluginRegistry::getSingleton ();
+$oPluginRegistry = PMPluginRegistry::getSingleton ();
 $dashBoardPages = $oPluginRegistry->getDashboardPages ();
 if (count($dashBoardPages)>0) {
     $G_TMP_MENU->AddIdRawOption('PLUGINS', '', G::LoadTranslation('ID_PLUGINS'), '', '', 'blockHeader');

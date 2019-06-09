@@ -804,7 +804,7 @@ class Process
                 //    "PROCESSMAP"   => $this //?
                 //);
                 //
-                //$oPluginRegistry = &PMPluginRegistry::getSingleton();
+                //$oPluginRegistry = PMPluginRegistry::getSingleton();
                 //$oPluginRegistry->executeTriggers(PM_NEW_PROCESS_SAVE, $arrayData);
                 break;
             case "UPDATE":

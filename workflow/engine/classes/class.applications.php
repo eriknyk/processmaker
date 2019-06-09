@@ -1142,7 +1142,7 @@ class Applications
         $caseSteps = $step->getAllCaseSteps( $proUid, $tasUid, $appUid );
 
         //getting externals steps
-        $oPluginRegistry = &PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
         $eSteps = $oPluginRegistry->getSteps();
         $externalSteps = array ();
 

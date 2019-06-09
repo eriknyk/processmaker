@@ -405,7 +405,7 @@ class processMap
             $oPM->derivation = array('Sequential', 'Evaluate (manual)', 'Evaluate (auto)', 'Parallel (fork)', 'Parallel by evaluation (fork)', 'Parallel (sequential join)', 'Parallel (sequential main join)' );
 
             //Load extended task properties from plugin. By JHL Jan 18, 2011
-            $oPluginRegistry = & PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $activePluginsForTaskProperties = $oPluginRegistry->getTaskExtendedProperties();
             $oPM->taskOptions = array();
             foreach ($activePluginsForTaskProperties as $key => $taskPropertiesInfo) {
@@ -784,7 +784,7 @@ class processMap
     {
         try {
             //call plugin
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $externalSteps = $oPluginRegistry->getSteps();
 
             $aSteps = array();
@@ -972,7 +972,7 @@ class processMap
             }
 
             //call plugin
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $externalSteps = $oPluginRegistry->getSteps();
             if (is_array($externalSteps) && count($externalSteps) > 0) {
                 foreach ($externalSteps as $key => $stepVar) {
@@ -1407,7 +1407,7 @@ class processMap
                     break;
                 default:
                     //if the $iForm is not one of the defaults then search under Plugins for an extended property. By JHL Jan 18, 2011
-                    $oPluginRegistry = & PMPluginRegistry::getSingleton();
+                    $oPluginRegistry = PMPluginRegistry::getSingleton();
                     $activePluginsForTaskProperties = $oPluginRegistry->getTaskExtendedProperties();
                     foreach ($activePluginsForTaskProperties as $key => $taskPropertiesInfo) {
                         $id = $taskPropertiesInfo->sNamespace . "--" . $taskPropertiesInfo->sName;
@@ -2037,7 +2037,7 @@ class processMap
         $oDataset = InputDocumentPeer::doSelectRS($oCriteria, Propel::getDbConnection('workflow_ro'));
         $oDataset->setFetchmode(ResultSet::FETCHMODE_ASSOC);
         $oDataset->next();
-        $inputDocArray = "";
+        $inputDocArray = array();
         $inputDocArray[] = array('INP_DOC_UID' => 'char', 'PRO_UID' => 'char', 'INP_DOC_TITLE' => 'char', 'INP_DOC_DESCRIPTION' => 'char' );
         while ($aRow = $oDataset->getRow()) {
             if (($aRow['INP_DOC_TITLE'] == null) || ($aRow['INP_DOC_TITLE'] == "")) {
@@ -2105,7 +2105,7 @@ class processMap
         $oDataset = TriggersPeer::doSelectRS($oCriteria);
         $oDataset->setFetchmode(ResultSet::FETCHMODE_ASSOC);
         $oDataset->next();
-        $triggersArray = "";
+        $triggersArray = array();
         $triggersArray[] = array('TRI_UID' => 'char', 'PRO_UID' => 'char', 'TRI_TITLE' => 'char', 'TRI_DESCRIPTION' => 'char');
         while ($aRow = $oDataset->getRow()) {
 
@@ -3257,7 +3257,7 @@ class processMap
     public function listNoProcessesUser($sProcessUID)
     {
         G::LoadSystem('rbac');
-        $memcache = & PMmemcached::getSingleton(SYS_SYS);
+        $memcache = PMmemcached::getSingleton(SYS_SYS);
 
         $oCriteria = new Criteria('workflow');
         $oCriteria->addSelectColumn(ProcessUserPeer::USR_UID);
@@ -4847,7 +4847,7 @@ class processMap
     {
         try {
             //call plugin
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $externalSteps = $oPluginRegistry->getSteps();
 
             $aSteps = array();
@@ -5280,7 +5280,7 @@ class processMap
             }
 
             //call plugin
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $externalSteps = $oPluginRegistry->getSteps();
             if (is_array($externalSteps) && count($externalSteps) > 0) {
                 foreach ($externalSteps as $key => $stepVar) {
@@ -5329,7 +5329,7 @@ class processMap
     {
         try {
             //call plugin
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $externalSteps = $oPluginRegistry->getSteps();
 
             $aSteps = array();
@@ -5946,7 +5946,7 @@ class processMap
     public function listExtNoProcessesUser($sProcessUID)
     {
         G::LoadSystem('rbac');
-        $memcache = & PMmemcached::getSingleton(SYS_SYS);
+        $memcache = PMmemcached::getSingleton(SYS_SYS);
 
         $oCriteria = new Criteria('workflow');
         $oCriteria->addSelectColumn(ProcessUserPeer::USR_UID);

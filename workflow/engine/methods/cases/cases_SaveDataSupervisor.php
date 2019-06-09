@@ -178,7 +178,7 @@ if (isset( $_FILES["form"]["name"] ) && count( $_FILES["form"]["name"] ) > 0) {
 				G::uploadFile( $arrayFileTmpName[$i], $sPathName, $sFileName );
 
 				//Plugin Hook PM_UPLOAD_DOCUMENT for upload document
-				$oPluginRegistry = &PMPluginRegistry::getSingleton();
+				$oPluginRegistry = PMPluginRegistry::getSingleton();
 
 				if ($oPluginRegistry->existsTrigger( PM_UPLOAD_DOCUMENT ) && class_exists( "uploadDocumentData" )) {
 					$triggerDetail = $oPluginRegistry->getTriggerInfo( PM_UPLOAD_DOCUMENT );

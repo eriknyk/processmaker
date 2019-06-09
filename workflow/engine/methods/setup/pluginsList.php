@@ -40,7 +40,7 @@ if (is_file( PATH_PLUGINS . 'enterprise/data/data' )) {
         $aPluginsPP[] = substr( $aPlugin['sFilename'], 0, strpos( $aPlugin['sFilename'], '-' ) ) . '.php';
     }
 }
-$oPluginRegistry = & PMPluginRegistry::getSingleton();
+$oPluginRegistry = PMPluginRegistry::getSingleton();
 if ($handle = opendir( PATH_PLUGINS )) {
     while (false !== ($file = readdir( $handle ))) {
 

@@ -5493,7 +5493,7 @@ class XmlForm
                 $aux[1] = $filename;
             }
             if (count( $aux ) == 2 && defined( 'G_PLUGIN_CLASS' )) {
-                $oPluginRegistry = & PMPluginRegistry::getSingleton();
+                $oPluginRegistry = PMPluginRegistry::getSingleton();
                 if ($response = $oPluginRegistry->isRegisteredFolder( $aux[0] )) {
                     if ($response !== true) {
                         $sPath = PATH_PLUGINS . $response . PATH_SEP;
@@ -5540,7 +5540,7 @@ class XmlForm
             if (! is_object( $this->tree->children[0] )) {
                 throw new Exception( 'Failure loading root node.' );
             }
-            $this->tree = &$this->tree->children[0]->toTree();
+            $this->tree = $this->tree->children[0]->toTree();
             //ERROR CODE [1] : Failed to read the xml document
             if (! isset( $this->tree )) {
                 return 1;

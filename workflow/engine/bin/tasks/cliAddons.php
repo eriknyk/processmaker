@@ -56,7 +56,7 @@ function run_addon_core_install($args)
         //the singleton has a list of enabled plugins
 
         $sSerializedFile = PATH_DATA_SITE . "plugin.singleton";
-        $oPluginRegistry = &PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
         if (file_exists($sSerializedFile)) {
             $oPluginRegistry->unSerializeInstance(file_get_contents($sSerializedFile));
         }

@@ -164,7 +164,7 @@ try {
         }
 
         //Execute the SSO Script from plugin
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $lSession="";
         $loginInfo = new loginInfo ($usr, $pwd, $lSession  );
         if ($oPluginRegistry->existsTrigger ( PM_LOGIN )) {
@@ -391,7 +391,7 @@ try {
     $oHeadPublisher->addExtJsScript('login/init', false);    //adding a javascript file .js
     $oHeadPublisher->assign('uriReq', $sLocation);
 
-    $oPluginRegistry =& PMPluginRegistry::getSingleton();
+    $oPluginRegistry =PMPluginRegistry::getSingleton();
     if ($oPluginRegistry->existsTrigger ( PM_AFTER_LOGIN )) {
         $oPluginRegistry->executeTriggers ( PM_AFTER_LOGIN , $_SESSION['USER_LOGGED'] );
     }

@@ -523,7 +523,7 @@ function run_pack_plugin($task, $args) {
   G::LoadClass('plugin');
   require_once ($pluginFilename);
 
-  $oPluginRegistry = & PMPluginRegistry::getSingleton();
+  $oPluginRegistry = PMPluginRegistry::getSingleton();
   $pluginDetail = $oPluginRegistry->getPluginDetails($pluginName . '.php');
   $fileTar = $pluginHome . PATH_SEP . $pluginName . '-' . $pluginDetail->iVersion . '.tar';
   G::LoadThirdParty('pear/Archive', 'Tar');
@@ -2205,7 +2205,7 @@ function run_update_plugin_attributes($task, $args)
         $pluginName = $args[0];
 
         //Update plugin attributes
-        $pmPluginRegistry = &PMPluginRegistry::getSingleton();
+        $pmPluginRegistry = PMPluginRegistry::getSingleton();
 
         $pmPluginRegistry->updatePluginAttributesInAllWorkspaces($pluginName);
 

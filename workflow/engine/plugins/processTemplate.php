@@ -60,7 +60,7 @@
     }
   }
 
- $oPluginRegistry =& PMPluginRegistry::getSingleton();
+ $oPluginRegistry =PMPluginRegistry::getSingleton();
  $oPluginRegistry->registerPlugin('processTemplate', __FILE__);
 
 

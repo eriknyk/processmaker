@@ -44,7 +44,7 @@ if ($access != 1) {
 }
 G::LoadClass( 'plugin' );
 
-$oPluginRegistry = & PMPluginRegistry::getSingleton();
+$oPluginRegistry = PMPluginRegistry::getSingleton();
 $G_MAIN_MENU = 'processmaker';
 $G_ID_MENU_SELECTED = 'SETUP';
 $G_SUB_MENU = 'setup';

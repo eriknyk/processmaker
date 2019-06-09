@@ -84,7 +84,7 @@ class PMPlugin
      */
     public function registerMenu($menuId, $menuFilename)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $sMenuFilename   = ($this->sClassName == 'enterprisePlugin') ? PATH_CORE . 'methods' . PATH_SEP . 'enterprise' . PATH_SEP . $menuFilename : PATH_PLUGINS . $this->sPluginFolder . PATH_SEP . $menuFilename;
         $oPluginRegistry->registerMenu($this->sNamespace, $menuId, $sMenuFilename);
     }
@@ -96,7 +96,7 @@ class PMPlugin
      */
     public function registerDashlets()
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerDashlets($this->sNamespace);
     }
 
@@ -107,7 +107,7 @@ class PMPlugin
      */
     public function registerReport()
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerReport($this->sNamespace);
     }
 
@@ -118,7 +118,7 @@ class PMPlugin
      */
     public function registerPmFunction()
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerPmFunction($this->sNamespace);
     }
 
@@ -129,7 +129,7 @@ class PMPlugin
      */
     public function setCompanyLogo($filename)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->setCompanyLogo($this->sNamespace, $filename);
     }
 
@@ -140,7 +140,7 @@ class PMPlugin
      */
     public function redirectLogin($role, $pathMethod)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerRedirectLogin($this->sNamespace, $role, $pathMethod);
     }
 
@@ -151,7 +151,7 @@ class PMPlugin
      */
     public function registerFolder($sFolderId, $sFolderName)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerFolder($this->sNamespace, $sFolderId, $sFolderName);
     }
 
@@ -162,7 +162,7 @@ class PMPlugin
      */
     public function registerStep($sStepId, $sStepName, $sStepTitle, $sSetupStepPage  = '')
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerStep( $this->sNamespace, $sStepId, $sStepName, $sStepTitle, $sSetupStepPage );
     }
 
@@ -174,7 +174,7 @@ class PMPlugin
      */
     public function registerTrigger($sTriggerId, $sTriggerName)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerTrigger($this->sNamespace, $sTriggerId, $sTriggerName);
     }
 
@@ -243,7 +243,7 @@ class PMPlugin
      */
     public function registerBreakPageTemplate($pageId, $templateFilename)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $sPageFilename = PATH_PLUGINS . $this->sPluginFolder . PATH_SEP . $templateFilename;
         $oPluginRegistry->registerBreakPageTemplate ($this->sNamespace, $pageId, $sPageFilename);
     }
@@ -255,7 +255,7 @@ class PMPlugin
      */
     public function registerCss($sCssFile)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerCss($this->sNamespace, $sCssFile);
     }
 
@@ -267,7 +267,7 @@ class PMPlugin
      */
     public function registerToolbarFile($sToolbarId, $filename)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $sFilename   = PATH_PLUGINS . $this->sPluginFolder . PATH_SEP . $filename;
         $oPluginRegistry->registerToolbarFile($this->sNamespace, $sToolbarId, $sFilename);
     }
@@ -284,7 +284,7 @@ class PMPlugin
         $sActionExecute,
         $sActionGetFields
     ) {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerCaseSchedulerPlugin(
             $this->sNamespace, $sActionId, $sActionForm, $sActionSave, $sActionExecute, $sActionGetFields
         );
@@ -297,7 +297,7 @@ class PMPlugin
      */
     public function registerTaskExtendedProperty($sPage, $sName, $sIcon="")
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerTaskExtendedProperty ( $this->sNamespace, $sPage, $sName, $sIcon );
     }
 
@@ -309,7 +309,7 @@ class PMPlugin
      */
     function registerJavascript($sCoreJsFile, $pluginJsFile)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerJavascript($this->sNamespace, $sCoreJsFile, $pluginJsFile);
     }
 
@@ -321,7 +321,7 @@ class PMPlugin
      */
     public function unregisterJavascript($sCoreJsFile, $pluginJsFile)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->unregisterJavascript($this->sNamespace, $sCoreJsFile, $pluginJsFile);
     }
 
@@ -331,7 +331,7 @@ class PMPlugin
 
     public function getExternalStepAction()
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         return $oPluginRegistry->getSteps();
     }
 
@@ -345,7 +345,7 @@ class PMPlugin
      */
     function registerRestService()
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerRestService($this->sNamespace);
     }
 
@@ -356,7 +356,7 @@ class PMPlugin
      */
     function registerExtendsRestService($className)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerExtendsRestService($this->sNamespace, $className);
     }
 
@@ -367,7 +367,7 @@ class PMPlugin
      */
     function disableExtendsRestService($className)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->disableExtendsRestService($this->sNamespace, $className);
     }
 
@@ -381,7 +381,7 @@ class PMPlugin
      */
     function unregisterRestService($classname, $path)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->unregisterRestService($this->sNamespace, $classname, $path);
     }
 
@@ -392,13 +392,13 @@ class PMPlugin
      */
     public function registerCronFile($cronFile)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->registerCronFile($this->sNamespace, $cronFile);
     }
 
     function enableRestService($enable)
     {
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         $oPluginRegistry->enableRestService($this->sNamespace, $enable);
     }
 
@@ -412,7 +412,7 @@ class PMPlugin
     public function registerDesignerMenu($file)
     {
         try {
-            $pluginRegistry = &PMPluginRegistry::getSingleton();
+            $pluginRegistry = PMPluginRegistry::getSingleton();
             $pluginRegistry->registerDesignerMenu($this->sNamespace, $file);
         } catch (Exception $e) {
             throw $e;
@@ -431,7 +431,7 @@ class PMPlugin
     public function registerMenuOptionsToReplace($from = array(), $options = array())
     {
         try {
-            $oPluginRegistry =& PMPluginRegistry::getSingleton();
+            $oPluginRegistry =PMPluginRegistry::getSingleton();
             $oPluginRegistry->registerMenuOptionsToReplace($this->sNamespace, $from, $options);
         } catch (Exception $e) {
             throw $e;
@@ -448,7 +448,7 @@ class PMPlugin
     public function registerImportProcessCallback($callBackFile = '')
     {
         try {
-            $oPluginRegistry =& PMPluginRegistry::getSingleton();
+            $oPluginRegistry =PMPluginRegistry::getSingleton();
             $oPluginRegistry->registerImportProcessCallback($this->sNamespace, $callBackFile);
         } catch (Exception $e) {
             throw $e;
@@ -465,7 +465,7 @@ class PMPlugin
     public function registerOpenReassignCallback($callBackFile = '')
     {
         try {
-            $oPluginRegistry =& PMPluginRegistry::getSingleton();
+            $oPluginRegistry =PMPluginRegistry::getSingleton();
             $oPluginRegistry->registerOpenReassignCallback($callBackFile);
         } catch (Exception $e) {
             throw $e;
@@ -484,7 +484,7 @@ class PMPlugin
             $scope = '/plugin/' . $this->sNamespace . '/';
         }
         try {
-            $pluginRegistry = &PMPluginRegistry::getSingleton();
+            $pluginRegistry = PMPluginRegistry::getSingleton();
             $pluginRegistry->registerDesignerSourcePath($this->sNamespace, $scope . $pathFile);
         } catch (Exception $e) {
             throw $e;

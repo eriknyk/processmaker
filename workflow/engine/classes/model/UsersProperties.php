@@ -322,7 +322,7 @@ class UsersProperties extends BaseUsersProperties
                 $userRole = $RBAC->aUserInfo['PROCESSMAKER']['ROLE']['ROL_CODE'];
             }
 
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $aRedirectLogin = $oPluginRegistry->getRedirectLogins();
             if (isset( $aRedirectLogin ) && is_array( $aRedirectLogin )) {
                 foreach ($aRedirectLogin as $key => $detail) {

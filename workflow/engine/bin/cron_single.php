@@ -333,7 +333,7 @@ function processWorkspace()
 {
     try {
         Bootstrap::LoadClass("plugin");
-        $oPluginRegistry =& PMPluginRegistry::getSingleton();
+        $oPluginRegistry =PMPluginRegistry::getSingleton();
         if (file_exists(PATH_DATA_SITE . 'plugin.singleton')) {
             $oPluginRegistry->unSerializeInstance(file_get_contents(PATH_DATA_SITE . 'plugin.singleton'));
         }
@@ -481,7 +481,7 @@ function executePlugins()
     // Executing registered cron files
 
     // -> Get registered cron files
-    $oPluginRegistry =& PMPluginRegistry::getSingleton();
+    $oPluginRegistry =PMPluginRegistry::getSingleton();
     $cronFiles = $oPluginRegistry->getCronFiles();
 
     // -> Execute functions

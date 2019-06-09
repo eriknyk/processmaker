@@ -69,7 +69,7 @@ switch ($function) {
             $oData['PRO_TEMPLATE'] = (isset( $_POST['form']['PRO_TEMPLATE'] ) && $_POST['form']['PRO_TEMPLATE'] != '') ? $_POST['form']['PRO_TEMPLATE'] : '';
             $oData['PROCESSMAP'] = $oProcessMap;
 
-            $oPluginRegistry = & PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $oPluginRegistry->executeTriggers( PM_NEW_PROCESS_SAVE, $oData );
 
             G::header( 'location: processes_Map?PRO_UID=' . $sProUid );

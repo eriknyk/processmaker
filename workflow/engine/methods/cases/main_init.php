@@ -31,7 +31,7 @@ $oHeadPublisher->addExtJsScript( "cases/main", false ); //Adding a javascript fi
 $oHeadPublisher->addContent( "cases/main" ); //Adding a html file  .html.
 
 $keyMem = "USER_PREFERENCES" . $_SESSION["USER_LOGGED"];
-$memcache = &PMmemcached::getSingleton( SYS_SYS );
+$memcache = PMmemcached::getSingleton( SYS_SYS );
 
 if (($arrayConfig = $memcache->get( $keyMem )) === false) {
     $conf->loadConfig( $x, "USER_PREFERENCES", "", "", $_SESSION["USER_LOGGED"], "" );

@@ -394,7 +394,7 @@
 
   // create memcached singleton
   G::LoadClass ( 'memcached' );
-  $memcache = & PMmemcached::getSingleton(SYS_SYS);
+  $memcache = PMmemcached::getSingleton(SYS_SYS);
 
   // verify configuration for rest service
   if ($isRestRequest) {
@@ -425,7 +425,7 @@
   //here we are loading all plugins registered
   //the singleton has a list of enabled plugins
   $sSerializedFile = PATH_DATA_SITE . 'plugin.singleton';
-  $oPluginRegistry =& PMPluginRegistry::getSingleton();
+  $oPluginRegistry =PMPluginRegistry::getSingleton();
 
   if (file_exists ($sSerializedFile)) {
     $oPluginRegistry->unSerializeInstance(file_get_contents($sSerializedFile));

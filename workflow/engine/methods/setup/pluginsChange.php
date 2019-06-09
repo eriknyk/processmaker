@@ -34,7 +34,7 @@ $filter = new InputFilter();
 $path = PATH_PLUGINS . $pluginFile;
 $path = $filter->validateInput($path, 'path');
 
-$oPluginRegistry = & PMPluginRegistry::getSingleton();
+$oPluginRegistry = PMPluginRegistry::getSingleton();
 
 if ($handle = opendir( PATH_PLUGINS )) {
     while (false !== ($file = readdir( $handle ))) {

@@ -2844,7 +2844,7 @@ class G
     public static function array_merges()
     {
         $array = array ();
-        $arrays = & func_get_args();
+        $arrays = func_get_args();
         foreach ($arrays as $array_i) {
             if (is_array( $array_i )) {
                 G::array_merge_2( $array, $array_i );
@@ -5055,7 +5055,7 @@ class G
         }
         // hook to get rest api classes from plugins
         if (class_exists( 'PMPluginRegistry' )) {
-            $pluginRegistry = & PMPluginRegistry::getSingleton();
+            $pluginRegistry = PMPluginRegistry::getSingleton();
             $pluginClasses = $pluginRegistry->getRegisteredRestClassFiles();
             $restClasses = array_merge( $restClasses, $pluginClasses );
         }

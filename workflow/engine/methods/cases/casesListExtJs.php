@@ -140,7 +140,7 @@ $oHeadPublisher->assign('extJsViewState', $oHeadPublisher->getExtJsViewState());
 $oHeadPublisher->assign('isIE', Bootstrap::isIE());
 $oHeadPublisher->assign('__OPEN_APPLICATION_UID__', $openApplicationUid);
 
-$oPluginRegistry =& PMPluginRegistry::getSingleton();
+$oPluginRegistry =PMPluginRegistry::getSingleton();
 $fromPlugin = $oPluginRegistry->getOpenReassignCallback();
 $jsFunction = false;
 if(sizeof($fromPlugin)) {

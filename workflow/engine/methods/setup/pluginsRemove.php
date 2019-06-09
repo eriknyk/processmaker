@@ -45,7 +45,7 @@ $pluginName = $_REQUEST['pluginUid'];
 $pluginName = $filter->xssFilterHard($pluginName);
 
 if (file_exists( PATH_PLUGINS . $pluginName . '.php' )) {
-    $pluginRegistry = &PMPluginRegistry::getSingleton();
+    $pluginRegistry = PMPluginRegistry::getSingleton();
 
     $pluginRegistry->uninstallPlugin( $pluginName );
     $path = $filter->validateInput(PATH_DATA_SITE . 'plugin.singleton', 'path');

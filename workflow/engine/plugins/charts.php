@@ -26,7 +26,7 @@
     }
   }
 
- $oPluginRegistry =& PMPluginRegistry::getSingleton();
+ $oPluginRegistry =PMPluginRegistry::getSingleton();
  $oPluginRegistry->registerPlugin('charts', __FILE__);
 
 

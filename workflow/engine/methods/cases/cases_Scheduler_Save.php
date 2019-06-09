@@ -220,7 +220,7 @@ try {
 
     if ((isset( $_POST['form']['CASE_SH_PLUGIN_UID'] )) && ($_POST['form']['CASE_SH_PLUGIN_UID'] != "")) {
         $params = explode( "--", $_REQUEST['form']['CASE_SH_PLUGIN_UID'] );
-        $oPluginRegistry = & PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
         $activePluginsForCaseScheduler = $oPluginRegistry->getCaseSchedulerPlugins();
 
         foreach ($activePluginsForCaseScheduler as $key => $caseSchedulerPluginDetail) {

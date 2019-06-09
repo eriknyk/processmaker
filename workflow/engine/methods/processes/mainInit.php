@@ -42,7 +42,7 @@ if ($pmVersion != "") {
     $arrayFlagMenuNewOption       = (version_compare($pmVersion . "", "3", ">="))? array("bpmn" => true) : array("pm" => true);
 }
 
-$pluginRegistry = &PMPluginRegistry::getSingleton();
+$pluginRegistry = PMPluginRegistry::getSingleton();
 
 $arrayMenuNewOptionPlugin     = array();
 $arrayContextMenuOptionPlugin = array();
@@ -90,7 +90,7 @@ if($RBAC->userCanAccess('PM_DELETE_PROCESS_CASES') === 1) {
 }
 $oHeadPublisher->assign('deleteCasesFlag', $deleteCasesFlag);
 
-$oPluginRegistry = & PMPluginRegistry::getSingleton();
+$oPluginRegistry = PMPluginRegistry::getSingleton();
 $callBackFile = $oPluginRegistry->getImportProcessCallback();
 $file = false; 
 if(sizeof($callBackFile)) {

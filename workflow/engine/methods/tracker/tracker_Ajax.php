@@ -141,7 +141,7 @@ try {
 
             //If plugin and trigger are defined for listing
             if ($oPluginRegistry->existsTrigger( PM_CASE_DOCUMENT_LIST_ARR )) {
-                $oPluginRegistry = & PMPluginRegistry::getSingleton();
+                $oPluginRegistry = PMPluginRegistry::getSingleton();
                 $filesPluginArray = $oPluginRegistry->executeTriggers( PM_CASE_DOCUMENT_LIST_ARR, $_SESSION['APPLICATION'] );
                 //Now search for the file, if exists the change the download URL
                 foreach ($filesPluginArray as $file) {
@@ -184,7 +184,7 @@ try {
 
             //If plugin and trigger are defined for listing
             if ($oPluginRegistry->existsTrigger( PM_CASE_DOCUMENT_LIST_ARR )) {
-                $oPluginRegistry = & PMPluginRegistry::getSingleton();
+                $oPluginRegistry = PMPluginRegistry::getSingleton();
                 $filesPluginArray = $oPluginRegistry->executeTriggers( PM_CASE_DOCUMENT_LIST_ARR, $aFields['APP_UID'] );
                 //Now search for the file, if exists the change the download URL
                 foreach ($filesPluginArray as $file) {

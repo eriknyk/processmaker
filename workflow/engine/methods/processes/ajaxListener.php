@@ -114,7 +114,7 @@ class Ajax
                 $oData['PRO_TEMPLATE'] = (isset($_POST['PRO_TEMPLATE']) && $_POST['PRO_TEMPLATE'] != '') ? $_POST['form']['PRO_TEMPLATE'] : '';
                 $oData['PROCESSMAP'] = $oProcessMap;
 
-                $oPluginRegistry = & PMPluginRegistry::getSingleton();
+                $oPluginRegistry = PMPluginRegistry::getSingleton();
                 $oPluginRegistry->executeTriggers(PM_NEW_PROCESS_SAVE, $oData);
             } else {
                 //$oProcessMap->updateProcess($_POST['form']);

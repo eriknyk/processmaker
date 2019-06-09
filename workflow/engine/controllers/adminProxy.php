@@ -1406,8 +1406,8 @@ class adminProxy extends HttpProxyController
         $params = array ();
 
         $oServerConf = &serverConf::getSingleton();
-        $pluginRegistry = &PMPluginRegistry::getSingleton();
-        $licenseManager = &pmLicenseManager::getSingleton();
+        $pluginRegistry = PMPluginRegistry::getSingleton();
+        $licenseManager = pmLicenseManager::getSingleton();
 
         //License Information:
         $activeLicense = $licenseManager->getActiveLicense();

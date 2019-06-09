@@ -609,7 +609,7 @@ class PMPluginRegistry
                 //The singleton has a list of enabled plug-ins
 
 
-                $pluginRegistry = &PMPluginRegistry::getSingleton();
+                $pluginRegistry = PMPluginRegistry::getSingleton();
                 $pluginRegistry->unSerializeInstance( file_get_contents( $wsPathDataSite . "plugin.singleton" ) );
 
                 ///////
@@ -1311,7 +1311,7 @@ class PMPluginRegistry
             //Found a License
             if (class_exists( 'pmLicenseManager' )) {
                 $sSerializedFile = PATH_DATA_SITE . 'lmn.singleton';
-                $pmLicenseManagerO = & pmLicenseManager::getSingleton();
+                $pmLicenseManagerO = pmLicenseManager::getSingleton();
                 if (file_exists( $sSerializedFile )) {
                     $pmLicenseManagerO->unSerializeInstance( file_get_contents( $sSerializedFile ) );
                 }
@@ -1641,7 +1641,7 @@ class PMPluginRegistry
             //Update plugin attributes
             require_once(PATH_PLUGINS . $pluginFileName);
 
-            $pmPluginRegistry = &PMPluginRegistry::getSingleton();
+            $pmPluginRegistry = PMPluginRegistry::getSingleton();
 
             $pluginDetails = $pmPluginRegistry->getPluginDetails($pluginFileName);
 

@@ -1135,7 +1135,7 @@ class Cases
             $folderData = new \folderData(null, null, $sApplicationUID, null, $sUserUID);
             $folderData->PMType = "INPUT";
             $folderData->returnList = true;
-            //$oPluginRegistry      = & PMPluginRegistry::getSingleton();
+            //$oPluginRegistry      = PMPluginRegistry::getSingleton();
             $listing = $oPluginRegistry->executeTriggers(PM_CASE_DOCUMENT_LIST, $folderData);
         }
         $aObjectPermissions = $cases->getAllObjects($sProcessUID, $sApplicationUID, $sTasKUID, $sUserUID);
@@ -1433,7 +1433,7 @@ class Cases
             $folderData = new \folderData(null, null, $sApplicationUID, null, $sUserUID);
             $folderData->PMType = "OUTPUT";
             $folderData->returnList = true;
-            //$oPluginRegistry = & PMPluginRegistry::getSingleton();
+            //$oPluginRegistry = PMPluginRegistry::getSingleton();
             $listing = $oPluginRegistry->executeTriggers(PM_CASE_DOCUMENT_LIST, $folderData);
         }
         $aObjectPermissions = $cases->getAllObjects($sProcessUID, $sApplicationUID, $sTasKUID, $sUserUID);

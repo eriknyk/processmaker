@@ -74,7 +74,7 @@ $reports[] = array ('RPT_NUMBER' => count( $reports ),'RPT_UID' => 5,'RPT_TITLE'
       	                'RPT_TITLE' => "Report 9",//G::LoadTranslation('ID_REPORT6'),
       	                'VIEW'  => G::LoadTranslation('ID_VIEW'));*/
 
-$oPluginRegistry = &PMPluginRegistry::getSingleton();
+$oPluginRegistry = PMPluginRegistry::getSingleton();
 $aAvailableReports = $oPluginRegistry->getReports();
 
 //$aReports = array();

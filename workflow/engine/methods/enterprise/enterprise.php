@@ -105,7 +105,7 @@ class enterprisePlugin extends PMPlugin
 
     public function install()
     {
-        $pluginRegistry = &PMPluginRegistry::getSingleton();
+        $pluginRegistry = PMPluginRegistry::getSingleton();
 
         $pluginDetail = $pluginRegistry->getPluginDetails("enterprise.php");
         $pluginRegistry->enablePlugin($pluginDetail->sNamespace);
@@ -120,7 +120,7 @@ class enterprisePlugin extends PMPlugin
     public function setup()
     {
         if (!file_exists(PATH_DATA_SITE . "plugin.singleton")) {
-            $pluginRegistry = &PMPluginRegistry::getSingleton();
+            $pluginRegistry = PMPluginRegistry::getSingleton();
             $pluginDetail = $pluginRegistry->getPluginDetails("enterprise.php");
             $pluginRegistry->enablePlugin($pluginDetail->sNamespace);
             file_put_contents(PATH_DATA_SITE . "plugin.singleton", $pluginRegistry->serializeInstance());
@@ -133,7 +133,7 @@ class enterprisePlugin extends PMPlugin
 
         require_once (PATH_CORE . 'classes/model/AddonsStore.php');
         AddonsStore::checkLicenseStore();
-        $licenseManager = &pmLicenseManager::getSingleton();
+        $licenseManager = pmLicenseManager::getSingleton();
         AddonsStore::updateAll(false);
     }
 
@@ -178,7 +178,7 @@ class enterprisePlugin extends PMPlugin
         if (file_exists(PATH_CORE . "plugins" . PATH_SEP . $pluginName . ".php")) {
             require_once (PATH_CORE . "plugins" . PATH_SEP . $pluginName . ".php");
 
-            $pluginRegistry = &PMPluginRegistry::getSingleton();
+            $pluginRegistry = PMPluginRegistry::getSingleton();
 
             $pluginDetail = $pluginRegistry->getPluginDetails($pluginName . ".php");
 
@@ -348,7 +348,7 @@ class enterprisePlugin extends PMPlugin
     }
 }
 
-$oPluginRegistry = &PMPluginRegistry::getSingleton();
+$oPluginRegistry = PMPluginRegistry::getSingleton();
 $oPluginRegistry->registerPlugin('enterprise', __FILE__); //<- enterprise string must be in single quote, otherwise generate error
 
 //since we are placing pmLicenseManager and EE together.. after register EE, we need to require_once the pmLicenseManager

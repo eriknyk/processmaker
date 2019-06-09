@@ -81,7 +81,7 @@ class ProcessProxy extends HttpProxyController
 //                $oData['PRO_TEMPLATE'] = isset( $httpData->PRO_TEMPLATE ) && $httpData->PRO_TEMPLATE != '' ? $httpData->PRO_TEMPLATE : '';
 //                $oData['PROCESSMAP'] = $oProcessMap;
 //
-//                $oPluginRegistry = & PMPluginRegistry::getSingleton();
+//                $oPluginRegistry = PMPluginRegistry::getSingleton();
 //                $oPluginRegistry->executeTriggers( PM_NEW_PROCESS_SAVE, $oData );
 //
 //            } else {

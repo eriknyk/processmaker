@@ -216,7 +216,7 @@ try {
             break;
         default:
             $foundReport = false;
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $aAvailableReports = $oPluginRegistry->getReports();
             foreach ($aAvailableReports as $sReportClass) {
 

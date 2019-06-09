@@ -27,6 +27,11 @@
  * this file is used initialize main variables, redirect and dispatch all requests
  */
 
+//predifined fetch constants
+define('MYSQL_BOTH',MYSQLI_BOTH);
+define('MYSQL_NUM',MYSQLI_NUM);
+define('MYSQL_ASSOC',MYSQLI_ASSOC);
+
 if(strpos(getenv("HTTP_USER_AGENT"), "Mac") !== false) {
     putenv('TMPDIR=/var/tmp');
 }
@@ -328,7 +333,7 @@ $e_all = E_ALL & ~ E_DEPRECATED & ~ E_STRICT & ~ E_NOTICE  & ~E_WARNING;
 
 // Do not change any of these settings directly, use env.ini instead
 ini_set( 'display_errors', $config['display_errors']);
-ini_set( 'error_reporting', $e_all);
+ini_set( 'error_reporting', $config['error_reporting']);
 ini_set( 'short_open_tag', 'On' );
 ini_set( 'default_charset', "UTF-8" );
 ini_set( 'memory_limit', $config['memory_limit'] );
@@ -654,7 +659,7 @@ define( 'SERVER_PORT', $_SERVER['SERVER_PORT'] );
 
 // create memcached singleton
 Bootstrap::LoadClass( 'memcached' );
-$memcache = & PMmemcached::getSingleton( SYS_SYS );
+$memcache = PMmemcached::getSingleton( SYS_SYS );
 
 // load Plugins base class
 Bootstrap::LoadClass( 'plugin' );

@@ -1035,7 +1035,7 @@ class Ajax
     }
 }
 
-$pluginRegistry = & PMPluginRegistry::getSingleton();
+$pluginRegistry = PMPluginRegistry::getSingleton();
 if ($pluginRegistry->existsTrigger(PM_GET_CASES_AJAX_LISTENER)) {
     $ajax = $pluginRegistry->executeTriggers(PM_GET_CASES_AJAX_LISTENER, null);
 } else {

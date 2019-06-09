@@ -43,7 +43,7 @@ if ($access != 1) {
 }
 
 //call plugins
-$oPluginRegistry = & PMPluginRegistry::getSingleton();
+$oPluginRegistry = PMPluginRegistry::getSingleton();
 $oPluginRegistry->executeTriggers( PM_NEW_PROCESS_LIST, NULL );
 
 $aFields['MESSAGE1'] = G::LoadTranslation( 'ID_MSG_ERROR_PRO_TITLE' );

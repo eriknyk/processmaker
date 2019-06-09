@@ -119,7 +119,7 @@ switch ($option) {
             }
 
             ///////
-            $licenseManager = &pmLicenseManager::getSingleton();
+            $licenseManager = pmLicenseManager::getSingleton();
             $server = isset($licenseManager->server) ? $licenseManager->server : '';
             $workspace = (isset($licenseManager->workspace)) ? $licenseManager->workspace : 'pmLicenseSrv';
 
@@ -295,7 +295,7 @@ switch ($option) {
             }
 
             ///////
-            $licenseManager = &pmLicenseManager::getSingleton();
+            $licenseManager = pmLicenseManager::getSingleton();
             $server = (isset($licenseManager->server)) ? $licenseManager->server : '';
             $workspace = (isset($licenseManager->workspace)) ? $licenseManager->workspace : 'pmLicenseSrv';
 

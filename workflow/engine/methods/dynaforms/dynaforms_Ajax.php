@@ -43,7 +43,7 @@ $oDynaformEditorAjax = new dynaformEditorAjax( $_POST );
 //
 //  //G::genericForceLogin( 'WF_MYINFO' , 'login/noViewPage', $urlLogin = 'login/login' );
 //
-//	G::LoadInclude('ajax');
+//	G::LoadInclude('ajax');dynaforms_Ajax
 //  G::LoadClass('toolBar');
 //  G::LoadClass('dynaFormField');
 //  G::LoadClass('dynaform');

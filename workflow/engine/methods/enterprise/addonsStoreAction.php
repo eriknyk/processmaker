@@ -54,12 +54,12 @@ try {
                     $dir = PATH_DATA_SITE;
                     G::uploadFile($aInfoLoadFile["tmp_name"], $dir, $aInfoLoadFile["name"]);
                     //reading the file that was uploaded
-                    $oPmLicenseManager = &pmLicenseManager::getSingleton();
+                    $oPmLicenseManager = pmLicenseManager::getSingleton();
                     $response = $oPmLicenseManager->installLicense($dir . $aInfoLoadFile["name"]);
 
                     ///////
                     //This command also find the following file "AddonsStore.php"
-                    $licenseManager = &pmLicenseManager::getSingleton();
+                    $licenseManager = pmLicenseManager::getSingleton();
 
                     preg_match("/^license_(.*).dat$/", $licenseManager->file, $matches);
                     $realId = urlencode($matches[1]);
@@ -80,10 +80,10 @@ try {
                     BasePeer::doUpdate($oCriteriaSelect, $oCriteriaUpdate, $cnn);
 
                     ///////
-                    //$licenseManager = &pmLicenseManager::getSingleton();
+                    //$licenseManager = pmLicenseManager::getSingleton();
 
                     //plugin.singleton //are all the plugins that are enabled in the SYS_SYS
-                    $pluginRegistry = &PMPluginRegistry::getSingleton();
+                    $pluginRegistry = PMPluginRegistry::getSingleton();
 
                     $arrayAddon = array();
 
@@ -246,7 +246,7 @@ try {
                 }
 
                 ///////
-                $licenseManager = &pmLicenseManager::getSingleton();
+                $licenseManager = pmLicenseManager::getSingleton();
                 $server = $licenseManager->server;
                 $workspace = (isset($licenseManager->workspace)) ? $licenseManager->workspace : 'pmLicenseSrv';
                 $url = "http://$server/sys".$workspace."/en/green/services/rest";
@@ -266,7 +266,7 @@ try {
                 $data = $data . "--$boundary\n";
 
                 ///////
-                //$licenseManager = &pmLicenseManager::getSingleton();
+                //$licenseManager = pmLicenseManager::getSingleton();
                 $activeLicense = $licenseManager->getActiveLicense();
 
                 $data = $data . "Content-Disposition: form-data; name=\"licenseFile\"; filename=\"" . $licenseManager->file . "\"\n";

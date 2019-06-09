@@ -155,7 +155,7 @@ try {
             }
             break;
         case 'authSourcesNew':
-            $pluginRegistry = &PMPluginRegistry::getSingleton();
+            $pluginRegistry = PMPluginRegistry::getSingleton();
 
             $arr = Array ();
             $oDirectory = dir( PATH_RBAC . 'plugins' . PATH_SEP );

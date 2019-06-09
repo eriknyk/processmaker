@@ -113,7 +113,7 @@ class AddonsManager extends BaseAddonsManager
             if (!$this->isInstalled()) {
                 return false;
             }
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $status = $oPluginRegistry->getStatusPlugin($this->getAddonName());
             return (strcmp($status, "enabled") == 0);
         } else {
@@ -130,7 +130,7 @@ class AddonsManager extends BaseAddonsManager
             return false;
         }
 
-        $oPluginRegistry = &PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
 
         G::LoadSystem('inputfilter');
         $filter = new InputFilter();
@@ -171,7 +171,7 @@ class AddonsManager extends BaseAddonsManager
                     return (null);
                 }
 
-                $oPluginRegistry = &PMPluginRegistry::getSingleton();
+                $oPluginRegistry = PMPluginRegistry::getSingleton();
                 $details = $oPluginRegistry->getPluginDetails($this->getAddonName() . ".php");
                 $v = (!($details == null))? $details->iVersion : null;
 
@@ -231,7 +231,7 @@ class AddonsManager extends BaseAddonsManager
         }
 
         ///////
-        $licenseManager = &pmLicenseManager::getSingleton();
+        $licenseManager = pmLicenseManager::getSingleton();
         $activeLicense = $licenseManager->getActiveLicense();
 
         $data = $data . "Content-Disposition: form-data; name=\"licenseFile\"; filename=\"" . $licenseManager->file . "\"\n";
@@ -388,7 +388,7 @@ class AddonsManager extends BaseAddonsManager
                 $_SESSION["__ENTERPRISE_INSTALL__"] = 1;
             }
 
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $oPluginRegistry->installPluginArchive($filename, $this->getAddonName());
 
             $this->setState();
@@ -411,7 +411,7 @@ class AddonsManager extends BaseAddonsManager
                 return false;
             }
 
-            $oPluginRegistry = &PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $oPluginRegistry->uninstallPlugin($this->getAddonName());
 
             return true;

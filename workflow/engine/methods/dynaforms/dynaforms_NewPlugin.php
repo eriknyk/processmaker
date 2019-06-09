@@ -23,7 +23,7 @@
  */
 
 //call plugin
-//  $oPluginRegistry = &PMPluginRegistry::getSingleton();
+//  $oPluginRegistry = PMPluginRegistry::getSingleton();
 //  $existsDynaforms = $oPluginRegistry->existsTrigger(PM_NEW_DYNAFORM_LIST );
 
 

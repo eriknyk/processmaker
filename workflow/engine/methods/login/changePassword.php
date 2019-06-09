@@ -50,7 +50,7 @@ if (class_exists('redirectDetail')) {
     if (isset($RBAC->aUserInfo['PROCESSMAKER']['ROLE']['ROL_CODE'])) {
         $userRole = $RBAC->aUserInfo['PROCESSMAKER']['ROLE']['ROL_CODE'];
     }
-    $oPluginRegistry = &PMPluginRegistry::getSingleton();
+    $oPluginRegistry = PMPluginRegistry::getSingleton();
     //$oPluginRegistry->showArrays();
     $aRedirectLogin = $oPluginRegistry->getRedirectLogins();
     if (isset($aRedirectLogin)) {

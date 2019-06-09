@@ -456,7 +456,7 @@ class SkinEngine
       $smarty->assign('tpl_submenu', PATH_TEMPLATE . 'submenu.html');
 
       if (class_exists('PMPluginRegistry')) {
-        $oPluginRegistry = &PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
         $sCompanyLogo = $oPluginRegistry->getCompanyLogo('/images/processmaker.logo.jpg');
       }
       else {
@@ -541,7 +541,7 @@ class SkinEngine
       $smarty->assign('tpl_submenu', PATH_TEMPLATE . 'submenu.html' );
 
       if (class_exists('PMPluginRegistry')) {
-        $oPluginRegistry = &PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
         $sCompanyLogo = $oPluginRegistry->getCompanyLogo ( '/images/processmaker.logo.jpg' );
       }
       else
@@ -767,7 +767,7 @@ class SkinEngine
 
         if (defined('SYS_SYS')) {
             require_once ("classes" . PATH_SEP . "class.pmLicenseManager.php");
-            $pmLicenseManagerO = &pmLicenseManager::getSingleton();
+            $pmLicenseManagerO = pmLicenseManager::getSingleton();
             $expireIn          = $pmLicenseManagerO->getExpireIn();
             $expireInLabel     = $pmLicenseManagerO->getExpireInLabel();
 
@@ -804,7 +804,7 @@ class SkinEngine
         }
       }
       if (class_exists('PMPluginRegistry')) {
-        $oPluginRegistry = &PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
         if ( isset($sFotoSelect) && $sFotoSelect!='' && !(strcmp($sWspaceSelect, SYS_SYS)) ){
           $sCompanyLogo = $oPluginRegistry->getCompanyLogo($sFotoSelect);
           $sCompanyLogo = "/sys".SYS_SYS."/".SYS_LANG."/".SYS_SKIN."/setup/showLogoFile.php?id=".base64_encode($sCompanyLogo);

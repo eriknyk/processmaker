@@ -128,7 +128,7 @@ try {
             G::uploadFile($_FILES['form']['tmp_name']['APP_DOC_FILENAME'], $sPathName, $sFileName);
 
             //Plugin Hook PM_UPLOAD_DOCUMENT for upload document
-            $oPluginRegistry = & PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             if ($oPluginRegistry->existsTrigger(PM_UPLOAD_DOCUMENT) && class_exists('uploadDocumentData')) {
 
                 $oData['APP_UID'] = $appId;

@@ -26,7 +26,7 @@ $pluginFile = $_GET['id'];
 
 G::LoadClass( 'plugin' );
 
-$oPluginRegistry = & PMPluginRegistry::getSingleton();
+$oPluginRegistry = PMPluginRegistry::getSingleton();
 
 $details = $oPluginRegistry->getPluginDetails( $pluginFile );
 $xmlform = isset( $details->sPluginFolder ) ? $details->sPluginFolder . '/' . $details->sSetupPage : '';

@@ -27,7 +27,7 @@
     }
   }
 
- $oPluginRegistry =& PMPluginRegistry::getSingleton();
+ $oPluginRegistry =PMPluginRegistry::getSingleton();
  $oPluginRegistry->registerPlugin('pmosCommunity', __FILE__);
 
 

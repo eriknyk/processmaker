@@ -59,7 +59,7 @@ foreach ($availablePlugins as $filename) {
     }
 
     //print "change to ENABLED";
-    $oPluginRegistry = & PMPluginRegistry::getSingleton();
+    $oPluginRegistry = PMPluginRegistry::getSingleton();
 
     $pluginFile = $sClassName . '.php';
     if (! file_exists( PATH_PLUGINS . $sClassName . '.php' )) {

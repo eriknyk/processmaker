@@ -101,7 +101,7 @@ if (isset ($_SESSION['USER_LOGGED'])) {
     }
 } else {
     // Execute SSO trigger
-    $pluginRegistry =& PMPluginRegistry::getSingleton();
+    $pluginRegistry =PMPluginRegistry::getSingleton();
     if (defined('PM_SINGLE_SIGN_ON')) {
         /*----------------------------------********---------------------------------*/
         if ($pluginRegistry->existsTrigger(PM_SINGLE_SIGN_ON)) {

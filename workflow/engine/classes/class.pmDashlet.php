@@ -363,7 +363,7 @@ class PMDashlet extends DashletInstance implements DashletInterface
 
         //---- verify the name plugin of the class
         $pluginName = '';
-        $oPluginRegistry = &PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
         $pluginsDashlets = $oPluginRegistry->getDashlets();
 
         foreach ($pluginsDashlets as $pluginDashlet) {
@@ -400,7 +400,7 @@ class PMDashlet extends DashletInstance implements DashletInterface
 
     private static function setIncludePath ()
     {
-        $oPluginRegistry = &PMPluginRegistry::getSingleton();
+        $oPluginRegistry = PMPluginRegistry::getSingleton();
         $pluginsDashlets = $oPluginRegistry->getDashlets();
         foreach ($pluginsDashlets as $pluginDashlet) {
             set_include_path( get_include_path() . PATH_SEPARATOR . PATH_PLUGINS . $pluginDashlet . PATH_SEP );

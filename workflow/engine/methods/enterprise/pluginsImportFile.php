@@ -77,7 +77,7 @@ try {
         throw (new Exception($str));
     }
 
-    $oPluginRegistry = &PMPluginRegistry::getSingleton();
+    $oPluginRegistry = PMPluginRegistry::getSingleton();
     $pluginFile = $sClassName . '.php';
 
     if ($bMainFile && $bClassFile) {

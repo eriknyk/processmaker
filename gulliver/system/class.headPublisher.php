@@ -381,7 +381,7 @@ class headPublisher
         // Load external/plugin css
         // NOTE is necesary to move this to decorator server
         if (class_exists('PMPluginRegistry')) {
-            $oPluginRegistry = & PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $registeredCss = $oPluginRegistry->getRegisteredCss();
             foreach ($registeredCss as $cssFile) {
                 $script .= "  <link rel='stylesheet' type='text/css' href='" . $cssFile->sCssFile . ".css' />\n";
@@ -498,7 +498,7 @@ class headPublisher
                 $flagPlugin = false;
                 $keyPlugin = count($aux)-2;
 
-                $oPluginRegistry = & PMPluginRegistry::getSingleton();
+                $oPluginRegistry = PMPluginRegistry::getSingleton();
                 if ($oPluginRegistry->isRegisteredFolder($aux[$keyPlugin])) {
                     $flagPlugin = true;
                 } else {
@@ -546,7 +546,7 @@ class headPublisher
 
         //hook for registered javascripts from plugins
         if (class_exists('PMPluginRegistry')) {
-            $oPluginRegistry = & PMPluginRegistry::getSingleton();
+            $oPluginRegistry = PMPluginRegistry::getSingleton();
             $pluginJavascripts = $oPluginRegistry->getRegisteredJavascriptBy($filename);
         } else {
             $pluginJavascripts = array();
@@ -677,7 +677,7 @@ class headPublisher
                     $aux = explode(PATH_SEP, $file);
                     //check if G_PLUGIN_CLASS is defined, because publisher can be called without an environment
                     if (count($aux) == 2 && defined('G_PLUGIN_CLASS')) {
-                        $oPluginRegistry = & PMPluginRegistry::getSingleton();
+                        $oPluginRegistry = PMPluginRegistry::getSingleton();
                         if ($oPluginRegistry->isRegisteredFolder($aux[0])) {
                             $sPath = PATH_PLUGINS;
                         }

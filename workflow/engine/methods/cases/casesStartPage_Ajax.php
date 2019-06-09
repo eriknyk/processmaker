@@ -347,7 +347,7 @@ function getSimpleDashboardData ()
 
 function getRegisteredDashboards ()
 {
-    $oPluginRegistry = & PMPluginRegistry::getSingleton();
+    $oPluginRegistry = PMPluginRegistry::getSingleton();
     $dashBoardPages = $oPluginRegistry->getDashboardPages();
     print_r( G::json_encode( $dashBoardPages ) );
 }
