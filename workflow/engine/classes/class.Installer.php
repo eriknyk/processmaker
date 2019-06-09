@@ -460,12 +460,12 @@ class Installer
         //  The mysql_escape_string function has been DEPRECATED as of PHP 5.3.0.
         //  $this->run_query('UPDATE USERS SET USR_USERNAME = \''.mysql_escape_string($this->options['admin']['username']).'\', `USR_PASSWORD` = \''.md5($this->options['admin']['password']).'\' WHERE `USR_UID` = \'00000000000000000000000000000001\' LIMIT 1',
         //    "Add 'admin' user in ProcessMaker (wf)");
-        $this->run_query('UPDATE USERS SET USR_USERNAME = \'' . mysql_real_escape_string($this->options['admin']['username']) . '\', ' . '  `USR_PASSWORD` = \'' . G::encryptHash($this->options['admin']['password']) . '\' ' . '  WHERE `USR_UID` = \'00000000000000000000000000000001\' LIMIT 1', "Add 'admin' user in ProcessMaker (wf)");
+        $this->run_query('UPDATE USERS SET USR_USERNAME = \'' . mysqli_real_escape_string($this->link, $this->options['admin']['username']) . '\', ' . '  `USR_PASSWORD` = \'' . G::encryptHash($this->options['admin']['password']) . '\' ' . '  WHERE `USR_UID` = \'00000000000000000000000000000001\' LIMIT 1', "Add 'admin' user in ProcessMaker (wf)");
         mysql_select_db($this->rbac_site_name, $this->connection_database);
         // The mysql_escape_string function has been DEPRECATED as of PHP 5.3.0.
         // $this->run_query('UPDATE USERS SET USR_USERNAME = \''.mysql_escape_string($this->options['admin']['username']).'\', `USR_PASSWORD` = \''.md5($this->options['admin']['password']).'\' WHERE `USR_UID` = \'00000000000000000000000000000001\' LIMIT 1',
         //   "Add 'admin' user in ProcessMaker (rb)");
-        $this->run_query('UPDATE RBAC_USERS SET USR_USERNAME = \'' . mysql_real_escape_string($this->options['admin']['username']) . '\', ' . '  `USR_PASSWORD` = \'' . G::encryptHash($this->options['admin']['password']) . '\' ' . '  WHERE `USR_UID` = \'00000000000000000000000000000001\' LIMIT 1', "Add 'admin' user in ProcessMaker (rb)");
+        $this->run_query('UPDATE RBAC_USERS SET USR_USERNAME = \'' . mysqli_real_escape_string($this->link, $this->options['admin']['username']) . '\', ' . '  `USR_PASSWORD` = \'' . G::encryptHash($this->options['admin']['password']) . '\' ' . '  WHERE `USR_UID` = \'00000000000000000000000000000001\' LIMIT 1', "Add 'admin' user in ProcessMaker (rb)");
     }
 
     /**
@@ -477,7 +477,7 @@ class Installer
      */
     private function run_query($query, $description = null)
     {
-        $result = @mysql_query($query, $this->connection_database);
+        $result = @mysqli_query($this->connection_database, $query);
         $error = ($result) ? false : mysql_error();
         $this->log(($description ? $description : $query) . " => " . (($error) ? $error : "OK") . "\n", $error);
     }
@@ -494,7 +494,7 @@ class Installer
         $lines = file($file);
         $previous = null;
         $errors = '';
-        @mysql_query("SET NAMES 'utf8';");
+        @mysqli_query($connection, "SET NAMES 'utf8';");
         foreach ($lines as $j => $line) {
             $line = trim($line); // Remove comments from the script
 
@@ -529,7 +529,7 @@ class Installer
             }
 
             $line = substr($line, 0, strrpos($line, ";"));
-            @mysql_query($line, $connection);
+            @mysqli_query($connection, $line);
         }
     }
 
@@ -675,13 +675,13 @@ class Installer
      */
     private function check_connection()
     {
-        if (!function_exists("mysql_connect")) {
+        if (!function_exists("mysqli_connect")) {
             $this->cc_status = 0;
             $rt = Array('connection' => false, 'grant' => 0, 'version' => false, 'message' => "ERROR: Mysql Module for PHP is not enabled, try install <b>php-mysql</b> package.", 'ao' => Array('ao_db_wf' => false, 'ao_db_rb' => false, 'ao_db_rp' => false
                 )
             );
         } else {
-            $this->connection_database = @mysql_connect($this->options['database']['hostname'], $this->options['database']['username'], $this->options['database']['password']);
+            $this->connection_database = @mysqli_connect($this->options['database']['hostname'], $this->options['database']['username'], $this->options['database']['password']);
             $rt = Array('version' => false, 'ao' => Array('ao_db_wf' => false, 'ao_db_rb' => false, 'ao_db_rp' => false
                 )
             );

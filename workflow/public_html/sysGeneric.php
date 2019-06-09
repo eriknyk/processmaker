@@ -27,6 +27,16 @@
  * this file is used initialize main variables, redirect and dispatch all requests
  */
 
+if(strpos(getenv("HTTP_USER_AGENT"), "Mac") !== false) {
+    putenv('TMPDIR=/var/tmp');
+}
+
+if (PHP_MAJOR_VERSION >= 7) {
+    set_error_handler(function ($errno, $errstr) {
+        return strpos($errstr, 'Declaration of') === 0;
+    }, E_WARNING);
+}
+
 function transactionLog($transactionName){
     if (extension_loaded('newrelic')) {
         $baseName="ProcessMaker";
@@ -314,11 +324,11 @@ if (!(array_key_exists('REMOTE_USER', $_SERVER) && (string)($_SERVER['REMOTE_USE
 //$e_all = defined( 'E_DEPRECATED' ) ? E_ALL & ~ E_DEPRECATED : E_ALL;
 //$e_all = defined( 'E_STRICT' ) ? $e_all & ~ E_STRICT : $e_all;
 //$e_all = $config['debug'] ? $e_all : $e_all & ~ E_NOTICE;
-//$e_all = E_ALL & ~ E_DEPRECATED & ~ E_STRICT & ~ E_NOTICE  & ~E_WARNING;
+$e_all = E_ALL & ~ E_DEPRECATED & ~ E_STRICT & ~ E_NOTICE  & ~E_WARNING;
 
 // Do not change any of these settings directly, use env.ini instead
 ini_set( 'display_errors', $config['display_errors']);
-ini_set( 'error_reporting', $config['error_reporting']);
+ini_set( 'error_reporting', $e_all);
 ini_set( 'short_open_tag', 'On' );
 ini_set( 'default_charset', "UTF-8" );
 ini_set( 'memory_limit', $config['memory_limit'] );

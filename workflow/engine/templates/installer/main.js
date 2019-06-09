@@ -52,7 +52,7 @@ function finishInstallation()
   });
   wizard.showLoadMask(true, _('ID_FINISH'));
   Ext.Ajax.request({
-    url: 'createWorkspace',
+    url: 'installer/createWorkspace',
     success: function(response){
       Ext.MessageBox.hide();
       var response = Ext.util.JSON.decode(response.responseText);

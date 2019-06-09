@@ -130,12 +130,12 @@ class Installer extends Controller
         $info->memory = new stdclass();
 
         $info->php->version = phpversion();
-        $info->php->result = (version_compare(phpversion(), '5.4', '>=') && version_compare(phpversion(), '7.0', '<')) ? true : false;
+        $info->php->result = version_compare(phpversion(), '5.4', '>=') ? true : false;
 
         // MYSQL info and verification
         $info->mysql->result = false;
-        if (function_exists( 'mysql_query' )) {
-            $mysqlVer = mysql_get_client_info();
+        if (function_exists( 'mysqli_query' )) {
+            $mysqlVer = mysqli_get_client_info();
             preg_match( '/[0-9\.]+/', $mysqlVer, $match );
             $mysqlNum = (float) $match[0];
             $info->mysql->version = 'Client API version ' . $mysqlVer;
@@ -443,16 +443,16 @@ class Installer extends Controller
     {
         G::LoadSystem('inputfilter');
         $filter = new InputFilter();
-        $sql = $filter->preventSqlInjection($sql, Array());
+        $sql = $filter->preventSqlInjection($sql, Array(), $this->link);
         $this->installLog( $sql );
-        $query = @mysql_query( $sql, $this->link );
+        $query = mysqli_query( $this->link, $sql );
         if (! $query) {
-            $errorMessage = mysql_error( $this->link );
+            $errorMessage = mysqli_error( $this->link );
             $this->installLog( G::LoadTranslation('ID_MYSQL_ERROR', SYS_LANG, Array($errorMessage) ) );
             throw new Exception( $errorMessage );
             return false;
         }
-        @mysql_free_result( $query );
+        @mysqli_free_result( $query );
         return true;
     }
 
@@ -497,9 +497,9 @@ class Installer extends Controller
 
         // foreach( $queries as $sql) {
         //   if (trim($sql) != '') {
-        //     $query = @mysql_query($sql, $this->link);
+        //     $query = @mysqli_query($sql, $this->link);
         //     if (!$query) {
-        //       $errorMessage = mysql_error($this->link);
+        //       $errorMessage = mysqli_error($this->link);
 
 
         //       $this->installLog ( sprintf ( 'MySQL error: %s  Query: %s ', $errorMessage, $sql ) );
@@ -516,7 +516,7 @@ class Installer extends Controller
         $lines = file( $file );
         $previous = null;
         $errors = '';
-        @mysql_query( "SET NAMES 'utf8';" );
+        @mysqli_query($this->link, "SET NAMES 'utf8';");
         foreach ($lines as $j => $line) {
             $line = trim( $line ); // Remove comments from the script
 
@@ -551,7 +551,7 @@ class Installer extends Controller
             }
 
             $line = substr( $line, 0, strrpos( $line, ";" ) );
-            @mysql_query( $line, $this->link );
+            @mysqli_query( $this->link, $line );
         }
 
         $endTime = microtime( true );
@@ -607,19 +607,19 @@ class Installer extends Controller
 
         $query = "GRANT ALL PRIVILEGES ON `%s`.* TO %s@'%s' IDENTIFIED BY '%s' WITH GRANT OPTION";
         $sql = sprintf( $query, $psDatabase, $psUser, $host, $psPassword );
-        $sql = $filter->preventSqlInjection($query, array($psDatabase, $psUser, $host, $psPassword ));
-        $query = @mysql_query( $sql, $this->link );
+        $sql = $filter->preventSqlInjection($sql, array($psDatabase, $psUser, $host, $psPassword ));
+        $query = @mysqli_query( $this->link, $sql );
 
         if (! $query) {
-            $errorMessage = mysql_error( $this->link );
+            $errorMessage = mysqli_error( $this->link );
             $this->installLog( G::LoadTranslation('ID_MYSQL_ERROR', SYS_LANG, Array($errorMessage) ) );
-            if (mysql_errno( $this->link) == 1410 || mysql_errno( $this->link) == 1132) {
+            if (mysqli_errno( $this->link) == 1410 || mysqli_errno( $this->link) == 1132) {
                 $errorMessage .= '. ' . G::LoadTranslation('ID_INSTALL_USE_CURRENT_USER');
             }
             throw new Exception( $errorMessage );
             return false;
         }
-        @mysql_free_result( $query );
+        @mysqli_free_result( $query );
         $this->installLog( $sql );
     }
 
@@ -707,7 +707,7 @@ class Installer extends Controller
 
         try {
             $db_host = ($db_port != '' && $db_port != 3306) ? $db_hostname . ':' . $db_port : $db_hostname;
-            $this->link = @mysql_connect( $db_host, $db_username, $db_password );
+            $this->link = @mysqli_connect( $db_host, $db_username, $db_password );
             $this->installLog( G::LoadTranslation('ID_CONNECT_TO_SERVER', SYS_LANG, Array($db_hostname, $db_port, $db_username ) ));
 
             if ($deleteDB) {
@@ -834,7 +834,7 @@ class Installer extends Controller
                            )
                            VALUES (
                              'APP_CACHE_VIEW_ENGINE',
-                             '" . mysql_real_escape_string( serialize( array ('LANG' => 'en','STATUS' => 'active'
+                             '" . mysqli_real_escape_string( serialize( array ('LANG' => 'en','STATUS' => 'active'
                 ) ) ) . "'
                            )" );
 
@@ -990,6 +990,8 @@ class Installer extends Controller
             $info->message = G::LoadTranslation('ID_INSTALL_SUCESS');
             $info->messageFinish = G::LoadTranslation('ID_PROCESSMAKER_SUCCESS_INSTALLED', SYS_LANG, Array($workspace));;
         } catch (Exception $e) {
+            var_dump('ERR ' . $e->getMessage());
+            var_dump($e->getTraceAsString());die;
             $info->canRedirect = false;
             $info->result = false;
             $info->message = $e->getMessage();
@@ -1202,7 +1204,7 @@ class Installer extends Controller
     {
         $this->setResponseType( 'json' );
         $engines = array ();
-        if (function_exists( 'mysql_query' )) {
+        if (function_exists( 'mysqli_query' )) {
             $engine = new stdclass();
             $engine->id = 'mysql';
             $engine->label = 'MySQL';
@@ -1236,12 +1238,12 @@ class Installer extends Controller
             if($db_port != "3306"){
                 $db_hostname = $db_hostname.":".$db_port;
             }
-            $link = @mysql_connect( $db_hostname, $db_username, $db_password );
+            $link = @mysqli_connect( $db_hostname, $db_username, $db_password );
             $wfDatabase = $filter->validateInput($_REQUEST['wfDatabase'], 'nosql');
             $query = "show databases like '%s' ";
             $query = $filter->preventSqlInjection( $query, array($wfDatabase) );
-            $dataset = @mysql_query( $query, $link );
-            $info->wfDatabaseExists = (@mysql_num_rows( $dataset ) > 0);
+            $dataset = @mysqli_query( $link, $query );
+            $info->wfDatabaseExists = (@mysqli_num_rows( $dataset ) > 0);
         } else if ($_REQUEST['db_engine'] == 'mssql') {
             $link = @mssql_connect( $db_hostname, $db_username, $db_password );
             $wfDatabase = $filter->validateInput($_REQUEST['wfDatabase'], 'nosql');
@@ -1282,7 +1284,7 @@ class Installer extends Controller
         $info = new StdClass();
         $info->result = false;
         $info->message = '';
-        if (!function_exists("mysql_connect")) {
+        if (!function_exists("mysqli_connect")) {
             $info->message = G::LoadTranslation('ID_PHP_MYSQL_NOT _INSTALL');
             return $info;
         }
@@ -1300,7 +1302,7 @@ class Installer extends Controller
 
         $db_host = ($db_port != '' && $db_port != 1433) ? $db_hostname . ':' . $db_port : $db_hostname;
 
-        $link = @mysql_connect($db_host, $db_username, $db_password);
+        $link = @mysqli_connect($db_host, $db_username, $db_password);
         if (!$link) {
             $info->message .= G::LoadTranslation('ID_MYSQL_CREDENTIALS_WRONG');
             return $info;
@@ -1308,12 +1310,12 @@ class Installer extends Controller
         $db_username = $filter->validateInput($db_username, 'nosql');
         $db_hostname = $filter->validateInput($db_hostname, 'nosql');
         $query = "SELECT * FROM `information_schema`.`USER_PRIVILEGES` where (GRANTEE = \"'%s'@'%s'\" OR GRANTEE = \"'%s'@'%%'\") ";
-        $query = $filter->preventSqlInjection($query, array($db_username, $db_hostname, $db_username));
-        $res = @mysql_query($query, $link);
-        $row = @mysql_fetch_array($res);
+        $query = $filter->preventSqlInjection($query, array($db_username, $db_hostname, $db_username), $link);
+        $res = @mysqli_query($link, $query);
+        $row = @mysqli_fetch_array($res);
         $hasSuper = is_array($row);
-        @mysql_free_result($res);
-        @mysql_close($link);
+        @mysqli_free_result($res);
+        @mysqli_close($link);
         if (!$hasSuper) {
             $info->message .= G::LoadTranslation('ID_CONNECTION_ERROR_PRIVILEGE', SYS_LANG, Array($db_username));
             return $info;
@@ -1502,7 +1504,7 @@ class Installer extends Controller
         );
 
         $value = serialize($value);
-        $query = "INSERT INTO CONFIGURATION (CFG_UID, CFG_VALUE) VALUES ('ENVIRONMENT_SETTINGS', '".mysql_real_escape_string($value)."')";
+        $query = "INSERT INTO CONFIGURATION (CFG_UID, CFG_VALUE) VALUES ('ENVIRONMENT_SETTINGS', '".mysqli_real_escape_string($value)."')";
 
         $this->mysqlQuery($query);
     }
@@ -1665,10 +1667,10 @@ class Installer extends Controller
 
                 $db_host = ($db_port != '' && $db_port != 3306) ? $db_hostname . ':' . $db_port : $db_hostname;
 
-                $link = @mysql_connect( $db_host, $db_username, $db_password );
-                @mysql_select_db($wf, $link);
-                $res = mysql_query( "SELECT STORE_ID FROM ADDONS_MANAGER WHERE ADDON_NAME = '" . $namePlugin . "'", $link );
-                if ($row = mysql_fetch_array( $res )) {
+                $link = @mysqli_connect( $db_host, $db_username, $db_password );
+                @mysqli_select_db($wf, $link);
+                $res = mysqli_query($link, "SELECT STORE_ID FROM ADDONS_MANAGER WHERE ADDON_NAME = '" . $namePlugin . "'");
+                if ($row = mysqli_fetch_array( $res )) {
                     $ch = curl_init();
                     $postData = array();
                     $postData['action'] = "enable";

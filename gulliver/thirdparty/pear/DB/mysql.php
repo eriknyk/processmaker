@@ -708,10 +708,10 @@ class DB_mysql extends DB_common
      * @internal
      */
     function escapeSimple($str) {
-        if (function_exists('mysql_real_escape_string')) {
-            return @mysql_real_escape_string($str, $this->connection);
+        if (function_exists('mysqli_real_escape_string')) {
+            return @mysqli_real_escape_string($this->connection, $str);
         } else {
-            return @mysql_escape_string($str);
+            return @mysqli_escape_string($this->connection, $str);
         }
     }
 

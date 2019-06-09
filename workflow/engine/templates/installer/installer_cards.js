@@ -4,7 +4,7 @@ Ext.onReady(function(){
   PMExt.notify_time_out = 2;
 
   var storeDatabase = new Ext.data.Store({
-    proxy: new Ext.data.HttpProxy({url: 'getEngines', method:'POST'}),
+    proxy: new Ext.data.HttpProxy({url: 'installer/getEngines', method:'POST'}),
     reader: new Ext.data.JsonReader({
       fields: [{name: 'id'},{name: 'label'}]
     }),
@@ -44,7 +44,7 @@ Ext.onReady(function(){
   function getSystemInfo() {
     wizard.showLoadMask(true);
     Ext.Ajax.request({
-      url: 'getSystemInfo',
+      url: 'installer/getSystemInfo',
       success: function(response){
         var response = Ext.util.JSON.decode(response.responseText);
         Ext.getCmp('php').setValue       (getFieldOutput(response.php.version,      response.php.result));
@@ -75,7 +75,7 @@ Ext.onReady(function(){
     wizard.showLoadMask(true);
 
     Ext.Ajax.request({
-      url: 'getPermissionInfo',
+      url: 'installer/getPermissionInfo',
       success: function(response) {
         var okImage = '<img src="/images/dialog-ok-apply.png" width="12" height="12" />';
         var badImage = '<img src="/images/delete.png" width="15" height="15" />';
@@ -150,7 +150,7 @@ Ext.onReady(function(){
       return false;
     }
     Ext.Ajax.request({
-      url: 'testConnection',
+      url: 'installer/testConnection',
       success: function(response){
         var response = Ext.util.JSON.decode(response.responseText);
         Ext.getCmp('db_message').setValue(getFieldOutput(response.message, response.result));
@@ -205,7 +205,7 @@ Ext.onReady(function(){
   function checkDatabases() {
     wizard.showLoadMask(true);
     Ext.Ajax.request({
-      url: 'checkDatabases',
+      url: 'installer/checkDatabases',
       success: function(response){
         var existMsg = '<span style="color: red;">' + _('ID_NOT_AVAILABLE_DATABASE') + '</span>';
         var noExistsMsg = '<span style="color: green;">' + _('ID_AVAILABLE_DATABASE') + '</span>';

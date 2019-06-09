@@ -290,9 +290,9 @@ class InputFilter
         // url decode
         $source = html_entity_decode($source, ENT_QUOTES, "ISO-8859-1");
         // convert decimal
-        $source = preg_replace('/&#(\d+);/me',"chr(\\1)", $source);// decimal notation
+        $source = preg_replace('/&#(\d+);/m',"chr(\\1)", $source);// decimal notation
         // convert hex
-        $source = preg_replace('/&#x([a-f0-9]+);/mei',"chr(0x\\1)", $source);// hex notation
+        $source = preg_replace('/&#x([a-f0-9]+);/mi',"chr(0x\\1)", $source);// hex notation
         return $source;
     }
 
@@ -334,7 +334,7 @@ class InputFilter
       * @param Resource $connection - An open MySQL connection
       * @return String $source
       */
-    public function quoteSmart($source, &$connection)
+    public function quoteSmart($source, $connection)
     {
         // strip slashes
         if (get_magic_quotes_gpc()) {
@@ -353,14 +353,14 @@ class InputFilter
       * @param Resource $connection - An open MySQL connection
       * @return String $source
       */
-    public function escapeString($string, &$connection)
+    public function escapeString($string, $connection)
     {
         // depreciated function
         if (version_compare(phpversion(),"4.3.0", "<")) {
             mysql_escape_string($string);
         } else {
             // current function
-            mysql_real_escape_string($string);
+            mysqli_real_escape_string($connection, $string);
         }
         return $string;
     }
@@ -518,7 +518,7 @@ class InputFilter
     {
         if(is_array($values) && sizeof($values)) {
             foreach($values as $k1 => $val1) {
-                    $values[$k1] = mysql_real_escape_string($val1);
+                    $values[$k1] = mysqli_real_escape_string($con, $val1);
             }
             
             if ( get_magic_quotes_gpc() ) {
