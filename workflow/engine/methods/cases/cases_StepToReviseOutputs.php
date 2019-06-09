@@ -52,7 +52,7 @@ $G_ID_SUB_MENU_SELECTED = 'CASES_TO_REVISE';
 $oTemplatePower = new TemplatePower( PATH_TPL . 'cases/cases_Step.html' );
 $oTemplatePower->prepare();
 $G_PUBLISH = new Publisher();
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 // check if the code for the addScriptCode is necessary since the interface is now based in ExtJs
 $oHeadPublisher->addScriptCode( '
 var Cse = {};

@@ -41,7 +41,7 @@ $c = new Configurations();
 $configPage = $c->getConfiguration( 'calendarList', 'pageSize', '', $_SESSION['USER_LOGGED'] );
 $Config['pageSize'] = isset( $configPage['pageSize'] ) ? $configPage['pageSize'] : 20;
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addExtJsScript( 'setup/calendarList', false ); //adding a javascript file .js
 $oHeadPublisher->addContent( 'setup/calendarList' ); //adding a html file  .html.
 $oHeadPublisher->assign( 'CONFIG', $Config );

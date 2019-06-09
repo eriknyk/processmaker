@@ -29,7 +29,7 @@ if (!$resultRbac) {
     die();
 }
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addExtJsScript( 'setup/clearCompiled', true ); //adding a javascript file .js
 
 

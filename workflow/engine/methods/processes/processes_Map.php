@@ -82,7 +82,7 @@ $G_PUBLISH->AddContent( 'template', '', '', '', $oTemplatePower );
 $consolidated = 0;
 /*----------------------------------********---------------------------------*/
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptFile( '/jscore/dbConnections/main.js' );
 $oHeadPublisher->addScriptCode( '
     var maximunX = ' . processMap::getMaximunTaskX( $processUID ) . ';

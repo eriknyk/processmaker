@@ -8,7 +8,7 @@ if (isset( $_GET['action'] )) {
     $page = $_GET['action'];
 }
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 global $RBAC;
 switch ($page) {
     case "startCase":

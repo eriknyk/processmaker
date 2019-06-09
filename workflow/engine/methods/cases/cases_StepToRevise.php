@@ -72,7 +72,7 @@ $G_PUBLISH = new Publisher();
 $oCase = new Cases();
 $Fields = $oCase->loadCase( $_SESSION['APPLICATION'] );
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptCode( "
 if (typeof parent != 'undefined') {
   if (parent.showCaseNavigatorPanel) {

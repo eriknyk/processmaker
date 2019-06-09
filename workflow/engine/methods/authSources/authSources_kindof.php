@@ -35,7 +35,7 @@ $G_ID_SUB_MENU_SELECTED = 'AUTH_SOURCES';
 $aAuthSourceTypes = array (array ('sType' => 'char','sLabel' => 'char'));
 $oDirectory = dir( PATH_RBAC . 'plugins' . PATH_SEP );
 $G_PUBLISH = new Publisher();
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addExtJsScript( 'authSources/authSourceskindof', true ); //adding a javascript file .js
 $oHeadPublisher->assign( 'sprovider', $_GET['sprovider'] );
 G::RenderPage( 'publish', 'extJs' );

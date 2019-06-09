@@ -73,7 +73,7 @@ $aFields['ST_TYPE'] = isset($_GET['ST_TYPE'])?$_GET['ST_TYPE']:'';
 G::LoadClass( 'xmlfield_InputPM' );
 $G_PUBLISH = new Publisher();
 $G_PUBLISH->AddContent( 'xmlform', 'xmlform', $xmlform, '', $aFields, $xmlform_action );
-$oHeadPublisher =& headPublisher::getSingleton();
+$oHeadPublisher = headPublisher::getSingleton();
 //$oHeadPublisher->addScriptFile('/js/codemirror/js/codemirror.js', 1);
 $oHeadPublisher->addCssFile('/js/codemirror/lib/codemirror.css', 1);
 $oHeadPublisher->addCssFile('/js/codemirror/addon/hint/show-hint.css', 1);

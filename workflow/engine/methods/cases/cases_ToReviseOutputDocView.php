@@ -53,7 +53,7 @@ $oTemplatePower = new TemplatePower( PATH_TPL . 'cases/cases_Step.html' );
 $oTemplatePower->prepare();
 $G_PUBLISH = new Publisher();
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptCode( '
 var Cse = {};
 Cse.panels = {};

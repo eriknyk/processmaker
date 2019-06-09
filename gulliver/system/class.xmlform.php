@@ -4305,7 +4305,7 @@ class XmlForm_Field_Grid extends XmlForm_Field
 
         $tpl->template = $tpl->printTemplate( $this );
         //In the header
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addScriptFile( $this->scriptURL );
         $oHeadPublisher->addScriptCode( $tpl->printJavaScript( $this ) );
         return $tpl->printObject( $this, $therow );
@@ -5418,7 +5418,7 @@ class XmlForm_Field_Xmlform extends XmlForm_Field
         //$this->rows=count(reset($values));
         $tpl->template = $tpl->printTemplate( $this );
         //In the header
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addScriptFile( $this->scriptURL );
         $oHeadPublisher->addScriptCode( $tpl->printJavaScript( $this ) );
         return $tpl->printObject( $this );

@@ -39,7 +39,7 @@ $xmlform = 'triggers/triggersCustom';
 G::LoadClass( 'xmlfield_InputPM' );
 $G_PUBLISH = new Publisher();
 $G_PUBLISH->AddContent( 'xmlform', 'xmlform', $xmlform, '', $aFields, '../triggers/triggers_Save' );
-$oHeadPublisher =& headPublisher::getSingleton();
+$oHeadPublisher = headPublisher::getSingleton();
 //$oHeadPublisher->addScriptFile('/js/codemirror/js/codemirror.js', 1);
 $oHeadPublisher->addScriptFile('/js/codemirror/lib/codemirror.js', 1);
 $oHeadPublisher->addScriptFile("/js/codemirror/addon/edit/matchbrackets.js",1);

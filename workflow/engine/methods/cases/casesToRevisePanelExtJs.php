@@ -1,5 +1,5 @@
 <?php
-//  $oHeadPublisher =& headPublisher::getSingleton();
+//  $oHeadPublisher = headPublisher::getSingleton();
 //  $TRANSLATIONS = array_merge($TRANSLATIONS, $TRANSLATIONS2);
 
 $delIndex = $_GET['DEL_INDEX'];

@@ -213,7 +213,7 @@ if (!$partnerFlag) {
 
     //if flag to send heartbeat is enabled, and it is time to send heartbeat, sent it using asynchronous beat.
     if (($sflag == "1") && ((strtotime("now") > $nextBeatDate) || is_null($nextBeatDate))) {
-        $oHeadPublisher =& headPublisher::getSingleton();
+        $oHeadPublisher = headPublisher::getSingleton();
         //To do: we need to change to ExtJs
         $oHeadPublisher->addScriptCode('var flagHeartBeat = 1;');
     } else {

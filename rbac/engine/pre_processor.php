@@ -67,7 +67,7 @@ define( 'PATH_UPLOAD',     PATH_HTML . "/" . "files" );
   G::LoadSystem('templatePower');
 
   G::LoadSystem('headPublisher');
-  $oHeadPublisher =& headPublisher::getSingleton();
+  $oHeadPublisher = headPublisher::getSingleton();
 
 /* Setup ... */
   //global $G_STRINGS;

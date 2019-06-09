@@ -48,7 +48,7 @@ $_DBArray['authSourceTypes'] = $aAuthSourceTypes;
 $_SESSION['_DBArray'] = $_DBArray;
 
 $G_PUBLISH = new Publisher();
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addExtJsScript( 'authSources/authSourcesListNew', true ); //adding a javascript file .js
 G::RenderPage( 'publish', 'extJs' );
 

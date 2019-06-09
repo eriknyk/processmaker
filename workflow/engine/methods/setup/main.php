@@ -42,7 +42,7 @@ else {
 }
 
 $G_PUBLISH->AddContent( 'view', 'setup/main_Load' );
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptFile('/jscore/src/PM.js');
 $oHeadPublisher->addScriptFile('/jscore/src/Sessions.js');
 G::RenderPage( 'publish' );

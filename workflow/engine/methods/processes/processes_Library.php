@@ -93,7 +93,7 @@ try {
 
     $G_PUBLISH = new Publisher();
     $G_PUBLISH->AddContent( 'propeltable', 'paged-table', 'processes/processes_ListPublic', $c );
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
     //$oHeadPublisher->addScriptCode('leimnud.Package.Load("newAccount",{Type:"file",Absolute:true,Path:"/jscore/newAccount.js"});');
     $oHeadPublisher->addScriptCode( "
   var oPanel;

@@ -43,7 +43,7 @@ $languageManagement = 0;
 
 $arraySystemConfiguration = System::getSystemConfiguration('', '', SYS_SYS);
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addExtJsScript( 'users/users', true ); //adding a javascript file .js
 // $oHeadPublisher->addContent('users/users'); //adding a html file  .html.
 $oHeadPublisher->assign( 'USR_UID', $aFields['USR_UID'] );

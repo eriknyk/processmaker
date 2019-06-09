@@ -28,7 +28,7 @@ require_once "classes/model/FieldCondition.php";
 G::LoadClass( 'ArrayPeer' );
 
 $G_PUBLISH = new Publisher();
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $DISPLAY_MAX_SIZE = 25;
 global $_DBArray;
 

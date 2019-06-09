@@ -578,7 +578,7 @@ class propelTable
         if ($thereisnotitle) {
             $this->title = '';
         }
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addInstanceModule( 'leimnud', 'panel' );
         $time_start = microtime( true );
         $this->prepareQuery( true );

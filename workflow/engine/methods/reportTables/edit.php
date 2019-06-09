@@ -2,7 +2,7 @@
 
 $id = isset( $_GET['id'] ) ? $_GET['id'] : false;
 $table = false;
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 
 $oHeadPublisher->addExtJsScript( 'reportTables/edit', true );
 $oHeadPublisher->assign( 'ADD_TAB_UID', $id );

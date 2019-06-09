@@ -165,7 +165,7 @@ class dynaformEditor extends WebResource
             $G_PUBLISH = new Publisher();
             $sName = 'dynaformEditor';
             $G_PUBLISH->publisherId = $sName;
-            $oHeadPublisher = & headPublisher::getSingleton();
+            $oHeadPublisher =  headPublisher::getSingleton();
             $oHeadPublisher->setTitle(G::LoadTranslation('ID_DYNAFORM_EDITOR') . ' - ' . $Properties['DYN_TITLE']);
             $G_PUBLISH->AddContent('blank');
             $this->panelConf['title'] = '';
@@ -204,7 +204,8 @@ class dynaformEditor extends WebResource
             $G_PUBLISH->AddContent('blank');
             $G_PUBLISH->AddContent('xmlform', 'xmlform', 'dynaforms/dynaforms_JSEditor', 'display:none', $JSEditor, '', '');
         } catch (Exception $e) {
-
+            die($e->getMessage());
+            die($e->getTraceAsString());
         }
         $G_PUBLISH->AddContent('xmlform', 'xmlform', 'dynaforms/dynaforms_Properties', 'display:none', $Properties, '', '');
         //for showHide tab option @Neyek

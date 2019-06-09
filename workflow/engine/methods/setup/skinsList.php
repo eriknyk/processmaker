@@ -40,7 +40,7 @@ $c = new Configurations();
 $configPage = $c->getConfiguration( 'skinList', 'pageSize', '', $_SESSION['USER_LOGGED'] );
 $Config['pageSize'] = isset( $configPage['pageSize'] ) ? $configPage['pageSize'] : 20;
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addExtJsScript( 'setup/skinList', false ); //adding a javascript file .js
 $oHeadPublisher->addContent( 'setup/skinList' ); //adding a html file  .html.
 $oHeadPublisher->assign( 'CONFIG', $Config );

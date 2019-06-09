@@ -77,7 +77,7 @@ class XmlForm_Field_ToolBar extends XmlForm_Field
         $this->toolBar = new toolBar($this->xmlfile, $this->home);
         $template = PATH_CORE . 'templates/' . $this->type . '.html';
         $out = $this->toolBar->render($template, $scriptCode);
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addScriptFile($this->toolBar->scriptURL);
         $oHeadPublisher->addScriptCode($scriptCode);
         return $out;

@@ -100,7 +100,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'paused') {
 }
 
     /* Render page */
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 
 $oHeadPublisher->addScriptCode( "
   if (typeof parent != 'undefined') {
@@ -147,7 +147,7 @@ if ($nTasksInParallel > 1) {
 $Fields['TAS_TITLE'] = $aTask['TAS_TITLE'];
 
 $objUser = new Users();
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptFile( '/jscore/cases/core/cases_Step.js' );
 $G_PUBLISH = new Publisher();
 $G_PUBLISH->AddContent( 'xmlform', 'xmlform', 'cases/cases_Resume.xml', '', $Fields, '' );

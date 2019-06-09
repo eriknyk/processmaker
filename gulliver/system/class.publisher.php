@@ -277,7 +277,7 @@ class Publisher
                 if ($Part['Template'] == 'grid') {
                     print ('</form>') ;
                 }
-                $oHeadPublisher = & headPublisher::getSingleton();
+                $oHeadPublisher =  headPublisher::getSingleton();
                 $oHeadPublisher->addScriptFile( $G_FORM->scriptURL );
                 $oHeadPublisher->addScriptCode( $scriptCode );
 
@@ -541,7 +541,7 @@ class Publisher
                 $mainPanelScript .= '});';
                 $mainPanelScript .= 'function ' . $panelName . 'Clear(){';
                 $mainPanelScript .= 'for(var r=0;r<' . $tabCount . ';r++)' . 'if (' . $panelName . 'Tabs[r])' . $panelName . 'Tabs[r].style.display="none";}';
-                $oHeadPublisher = & headPublisher::getSingleton();
+                $oHeadPublisher =  headPublisher::getSingleton();
                 $oHeadPublisher->addScriptCode( $mainPanelScript );
 
                 break;

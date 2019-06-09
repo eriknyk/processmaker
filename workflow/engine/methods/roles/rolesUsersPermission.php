@@ -54,7 +54,7 @@ $arrayConfigPage = $configuration->getConfiguration('roleUsersPermissionsList', 
 $arrayConfig = [];
 $arrayConfig['pageSize'] = (isset($arrayConfigPage['pageSize']))? $arrayConfigPage['pageSize'] : 20;
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->assign("PARTNER_FLAG", (defined('PARTNER_FLAG')) ? PARTNER_FLAG : false);
 $oHeadPublisher->assign('CONFIG', $arrayConfig);
 $oHeadPublisher->addExtJsScript( 'roles/rolesUsersPermission', false ); //adding a javascript file .js

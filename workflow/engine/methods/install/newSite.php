@@ -76,7 +76,7 @@ if (isset( $_POST['form']['NW_TITLE'] )) {
     $configPage = $c->getConfiguration( 'usersList', 'pageSize', '', $_SESSION['USER_LOGGED'] );
     $Config['pageSize'] = isset( $configPage['pageSize'] ) ? $configPage['pageSize'] : 20;
 
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
     $oHeadPublisher->addExtJsScript( 'setup/newSite', false ); //adding a javascript file .js
     $oHeadPublisher->addContent( 'setup/newSite' ); //adding a html file  .html.
     //  $oHeadPublisher->assign('CONFIG', $Config);

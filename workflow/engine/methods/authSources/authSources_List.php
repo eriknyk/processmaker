@@ -41,7 +41,7 @@ $G_ID_SUB_MENU_SELECTED = 'AUTH_SOURCES';
 $G_PUBLISH = new Publisher();
 $licensedFeatures = & PMLicensedFeatures::getSingleton();
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addExtJsScript( 'authSources/authSourcesList', false ); //adding a javascript file .js
 /*----------------------------------********---------------------------------*/
 $oHeadPublisher->addContent( 'authSources/authSourcesList' ); //adding a html file  .html.

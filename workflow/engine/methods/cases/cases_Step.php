@@ -145,7 +145,7 @@ $G_ID_SUB_MENU_SELECTED = '_';
 $oTemplatePower = new TemplatePower( PATH_TPL . 'cases/cases_Step.html' );
 $oTemplatePower->prepare();
 $G_PUBLISH = new Publisher();
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptCode( '
   var Cse = {};
   Cse.panels = {};
@@ -320,7 +320,7 @@ try {
             $Fields['APP_DATA']['__DYNAFORM_OPTIONS']['PHPSESSID'] = @session_id();
             $Fields['APP_DATA']['__DYNAFORM_OPTIONS']['DYNUIDPRINT'] = $_GET['UID'];
 
-            $oHeadPublisher = & headPublisher::getSingleton();
+            $oHeadPublisher =  headPublisher::getSingleton();
 
             if (!isset($_SESSION["PM_RUN_OUTSIDE_MAIN_APP"])) {
                 $oHeadPublisher->addScriptCode( "
@@ -417,7 +417,7 @@ try {
                     //  $G_PUBLISH->AddContent('propeltable', 'cases/paged-table-inputDocuments', 'cases/cases_InputdocsList', $oCase->getInputDocumentsCriteria($_SESSION['APPLICATION'], $_SESSION['INDEX'], $_GET['UID']), array_merge(array('DOC_UID'=>$_GET['UID']),$Fields));//$aFields
 
 
-                    $oHeadPublisher = & headPublisher::getSingleton();
+                    $oHeadPublisher =  headPublisher::getSingleton();
                     $titleDocument = "<h3>" . htmlspecialchars($Fields['INP_DOC_TITLE'], ENT_QUOTES) . "<br><small>" . G::LoadTranslation('ID_INPUT_DOCUMENT') . "</small></h3>";
                     if ($Fields['INP_DOC_DESCRIPTION']) {
                         $titleDocument .= " " . str_replace( "\n", "", str_replace( "'", "\'", nl2br( html_entity_decode($Fields['INP_DOC_DESCRIPTION'], ENT_COMPAT, "UTF-8") ) ) ) . "";
@@ -1195,7 +1195,7 @@ try {
     die();
 }
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptFile( "/jscore/cases/core/cases_Step.js" );
 
 if (!isset($_SESSION["PM_RUN_OUTSIDE_MAIN_APP"])) {

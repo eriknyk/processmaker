@@ -81,7 +81,7 @@ switch ($_POST['action']) {
         $G_PUBLISH->AddContent( 'propeltable', 'departments/paged-table2', 'departments/departments_UsersList', $criteria, $aFields );
         //$G_PUBLISH->AddContent('propeltable', 'paged-table', 'departments/departments_UsersList', $criteria, $aFields);
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addScriptCode( "groupname='{$aFields["DEP_TITLE"]}';" );
         $oHeadPublisher->addScriptCode( "depUid='{$aFields["DEP_UID"]}';" );
 

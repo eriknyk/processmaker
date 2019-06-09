@@ -32,7 +32,7 @@ $actionAjax = isset( $_REQUEST['actionAjax'] ) ? $_REQUEST['actionAjax'] : null;
 
 if ($actionAjax == "historyDynaformPage") {
     global $G_PUBLISH;
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
     G::loadClass( 'configuration' );
     $conf = new Configurations();
     $oHeadPublisher->addExtJsScript( 'cases/caseHistoryDynaformPage', true ); //adding a javascript file .js

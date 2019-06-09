@@ -47,13 +47,13 @@ if (file_exists( PATH_XMLFORM . 'ldapAdvanced/' . $fields['AUTH_SOURCE_PROVIDER'
         $configPage = $c->getConfiguration('additionalTablesList', 'pageSize','',$_SESSION['USER_LOGGED']);
         $Config['pageSize'] = isset($configPage['pageSize']) ? $configPage['pageSize'] : 20;
 
-        $oHeadPublisher = & headPublisher::getSingleton ();
+        $oHeadPublisher =  headPublisher::getSingleton ();
 
         $oHeadPublisher->assign("FORMATS", $c->getFormats());
         $oHeadPublisher->assign("CONFIG", $Config);
 
         if (file_exists(PATH_XMLFORM . 'ldapAdvanced/' . $fields['AUTH_SOURCE_PROVIDER'] . 'Flag')) {
-            $oHeadPublisher = & headPublisher::getSingleton ();
+            $oHeadPublisher =  headPublisher::getSingleton ();
 
             $oHeadPublisher->assign("Fields", $fields);
             $oHeadPublisher->addExtJsScript (PATH_TPL. 'ldapAdvanced/library', false, true );

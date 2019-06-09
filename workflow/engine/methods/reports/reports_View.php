@@ -76,7 +76,7 @@ try {
             } else {
                 $c = $oReport->generatedReport1_filter( $_POST['form']['FROM'], $_POST['form']['TO'], $_POST['form']['STARTEDBY'] );
             }
-            $oHeadPublisher = & headPublisher::getSingleton();
+            $oHeadPublisher =  headPublisher::getSingleton();
             $oHeadPublisher->addScriptFile( '/jscore/reports/reports.js' );
 
             $G_PUBLISH = new Publisher();
@@ -111,7 +111,7 @@ try {
             } else {
                 $c = $oReport->generatedReport2_filter( $_POST['form']['FROM'], $_POST['form']['TO'], $_POST['form']['STARTEDBY'] );
             }
-            $oHeadPublisher = & headPublisher::getSingleton();
+            $oHeadPublisher =  headPublisher::getSingleton();
             $oHeadPublisher->addScriptFile( '/jscore/reports/reports.js' );
 
             $G_PUBLISH = new Publisher();
@@ -143,7 +143,7 @@ try {
             } else {
                 $c = $oReport->generatedReport3_filter( $_POST['form']['PROCESS'], $_POST['form']['TASKS'] );
             }
-            $oHeadPublisher = & headPublisher::getSingleton();
+            $oHeadPublisher =  headPublisher::getSingleton();
             $oHeadPublisher->addScriptFile( '/jscore/reports/reports.js' );
             $G_PUBLISH = new Publisher();
 
@@ -172,7 +172,7 @@ try {
             } else {
                 $c = $oReport->generatedReport4_filter( $_POST['form']['PROCESS'], $_POST['form']['TASKS'] );
             }
-            $oHeadPublisher = & headPublisher::getSingleton();
+            $oHeadPublisher =  headPublisher::getSingleton();
             $oHeadPublisher->addScriptFile( '/jscore/reports/reports.js' );
             $G_PUBLISH = new Publisher();
 
@@ -201,7 +201,7 @@ try {
             } else {
                 $c = $oReport->generatedReport5_filter( $_POST['form']['PROCESS'], $_POST['form']['TASKS'] );
             }
-            $oHeadPublisher = & headPublisher::getSingleton();
+            $oHeadPublisher =  headPublisher::getSingleton();
             $oHeadPublisher->addScriptFile( '/jscore/reports/reports.js' );
             $G_PUBLISH = new Publisher();
 

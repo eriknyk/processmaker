@@ -146,7 +146,7 @@ $docuroot = explode ( PATH_SEP , $_SERVER['DOCUMENT_ROOT'] );
   G::LoadSystem('pagedTable');
   G::LoadSystem('tree');
 
-  $oHeadPublisher =& headPublisher::getSingleton();
+  $oHeadPublisher = headPublisher::getSingleton();
 
   //***************** database and workspace definition  ************************
   //if SYS_TEMP exists, the URL has a workspace, now we need to verify if exists their db.php file

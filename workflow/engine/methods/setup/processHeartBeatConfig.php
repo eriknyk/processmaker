@@ -24,7 +24,7 @@
 global $RBAC;
 $RBAC->requirePermissions( 'PM_SETUP', 'PM_SETUP_HEART_BEAT');
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 G::LoadClass( 'serverConfiguration' );
 $oServerConf = & serverConf::getSingleton();
 

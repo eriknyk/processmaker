@@ -78,7 +78,7 @@ try {
             $oTemplatePower->prepare();
             $G_PUBLISH = new Publisher();
             $G_PUBLISH->AddContent( 'template', '', '', '', $oTemplatePower );
-            $oHeadPublisher = & headPublisher::getSingleton();
+            $oHeadPublisher =  headPublisher::getSingleton();
             $oHeadPublisher->addScriptCode( '
 			  var pb=leimnud.dom.capture("tag.body 0");
 			  Sm=new stagesmap();

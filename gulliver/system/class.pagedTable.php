@@ -827,7 +827,7 @@ class pagedTable
                     ) );
                 }
                 $this->tpl->assign( 'content', $menu->render( $template, $scriptCode ) );
-                $oHeadPublisher = & headPublisher::getSingleton();
+                $oHeadPublisher =  headPublisher::getSingleton();
                 $oHeadPublisher->addScriptFile( $menu->scriptURL );
                 $oHeadPublisher->addScriptCode( $scriptCode );
             }
@@ -843,7 +843,7 @@ class pagedTable
                 $filterForm->setValues( array ('PAGED_TABLE_FAST_SEARCH' => $this->fastSearch
                 ) );
                 $this->tpl->assign( 'content', $filterForm->render( $template, $scriptCode ) );
-                $oHeadPublisher = & headPublisher::getSingleton();
+                $oHeadPublisher =  headPublisher::getSingleton();
                 $oHeadPublisher->addScriptFile( $filterForm->scriptURL );
                 $oHeadPublisher->addScriptCode( $scriptCode );
                 if (isset( $_SESSION )) {

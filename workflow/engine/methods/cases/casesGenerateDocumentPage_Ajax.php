@@ -76,7 +76,7 @@ function casesShowOuputDocumentExist ($url)
 
 if ($actionAjax == 'casesGenerateDocumentPage') {
     global $G_PUBLISH;
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
     G::loadClass( 'configuration' );
     $conf = new Configurations();
     $oHeadPublisher->addExtJsScript( 'cases/casesGenerateDocumentPage', true ); //adding a javascript file .js

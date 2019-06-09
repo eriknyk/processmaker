@@ -51,7 +51,7 @@
 		$counter=1;
 		$t = new lime_test( 13 , new lime_output_color());
 		
-		$obj =& headPublisher::getSingleton();
+		$obj = headPublisher::getSingleton();
 		
 		$method = array ( );
 		$testItems = 0;

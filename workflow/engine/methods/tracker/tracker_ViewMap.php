@@ -130,7 +130,7 @@ switch (($aCaseTracker['CT_MAP_TYPE'])) {
             $G_PUBLISH->AddContent( 'smarty', 'cases/cases_title', '', '', $aFields );
         }
         $G_PUBLISH->AddContent( 'template', '', '', '', $oTemplatePower );
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addScriptCode( '
         var maximunX = ' . processMap::getMaximunTaskX( $_SESSION['PROCESS'] ) . ';
         leimnud.event.add(window,"load",function(){
@@ -223,7 +223,7 @@ switch (($aCaseTracker['CT_MAP_TYPE'])) {
             $G_PUBLISH->AddContent( 'smarty', 'cases/cases_title', '', '', $aFields );
         }
         $G_PUBLISH->AddContent( 'template', '', '', '', $oTemplatePower );
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addScriptCode( '
         leimnud.Package.Load("stagesmap",{Type:"file",Absolute:true,Path:"/jscore/stagesmap/core/stagesmap.js"});
         leimnud.event.add(window,"load",function(){

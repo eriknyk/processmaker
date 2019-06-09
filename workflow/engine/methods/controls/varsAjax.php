@@ -173,7 +173,7 @@ $html .= '</form>';
 $display = 'raw';
 
 $G_PUBLISH = new Publisher();
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptFile('/jscore/controls/variablePicker.js');
 if (isset($_REQUEST['displayOption'])) {
     if($_REQUEST['displayOption']=='tinyMCE'){

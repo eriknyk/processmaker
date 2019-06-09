@@ -45,7 +45,7 @@ G::LoadSystem('templatePower');
 G::LoadSystem('publisher');
 G::LoadSystem('headPublisher');
 G::LoadSystem('pagedTable');
-  $oHeadPublisher =& headPublisher::getSingleton();
+  $oHeadPublisher = headPublisher::getSingleton();
 G::LoadSystem('testTools');
 G::LoadClass('processMap');
 

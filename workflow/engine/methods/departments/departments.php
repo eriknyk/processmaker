@@ -56,7 +56,7 @@ $G_ID_SUB_MENU_SELECTED = 'DEPARTMENTS';
 
 $G_PUBLISH = new Publisher();
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 
 $oHeadPublisher->addExtJsScript( 'departments/departmentList', false ); //adding a javascript file .js
 $oHeadPublisher->addContent( 'departments/departmentList' ); //adding a html file  .html.

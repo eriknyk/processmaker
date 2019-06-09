@@ -26,7 +26,7 @@
   * @Date Aug 26th, 2009
   */
   if(!((isset( $_SESSION['USER_LOGGED'] ))&&(!(isset($_GET['sid']))))||!isset($_SESSION['Current_Dynafom'])) {
-    $oHeadPublisher =& headPublisher::getSingleton();
+    $oHeadPublisher = headPublisher::getSingleton();
     $oHeadPublisher->addScriptCode("
     window.parent.location.href = '../processes/mainInit';
     ");

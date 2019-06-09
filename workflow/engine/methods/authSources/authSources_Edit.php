@@ -78,7 +78,7 @@ if (isset( $fields['AUTH_ANONYMOUS'] )) {
 
 $G_PUBLISH = new Publisher();
 if ($fields['AUTH_SOURCE_PROVIDER'] == 'ldap') {
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
     $oHeadPublisher->addExtJsScript( 'authSources/authSourcesEdit', false );
     $oHeadPublisher->assign( 'sUID', $_GET['sUID'] );
     G::RenderPage( 'publish', 'extJs' );
@@ -102,7 +102,7 @@ if ($fields['AUTH_SOURCE_PROVIDER'] == 'ldap') {
 
             $fields["AUTH_SOURCE_ATTRIBUTE_IDS"] = $attributes;
             if (file_exists(PATH_XMLFORM . 'ldapAdvanced/' . $fields['AUTH_SOURCE_PROVIDER'] . 'Flag')) {
-                $oHeadPublisher = & headPublisher::getSingleton ();
+                $oHeadPublisher =  headPublisher::getSingleton ();
 
                 $oHeadPublisher->assign("Fields", $fields);
                 $oHeadPublisher->addExtJsScript (PATH_TPL. 'ldapAdvanced/library', false, true );

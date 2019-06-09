@@ -34,7 +34,7 @@ $c = new Configurations();
 $configPage = $c->getConfiguration( 'casesSchedulerLogList', 'pageSize', '', $_SESSION['USER_LOGGED'] );
 $Config['pageSize'] = isset( $configPage['pageSize'] ) ? $configPage['pageSize'] : 20;
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 
 $oHeadPublisher->addExtJsScript( 'cases/casesSchedulerLog', false ); //adding a javascript file .js
 $oHeadPublisher->addContent( 'cases/casesSchedulerLog' ); //adding a html file  .html.

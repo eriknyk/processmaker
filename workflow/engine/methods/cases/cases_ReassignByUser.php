@@ -133,7 +133,7 @@ try {
         $oCriteria = new Criteria( 'dbarray' );
         $oCriteria->setDBArrayTable( 'reassign_byuser' );
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addScriptFile( '/jscore/cases/reassignByUser.js' );
         $G_PUBLISH->ROWS_PER_PAGE = 12;
         $G_PUBLISH->AddContent( 'propeltable', 'cases/paged-table-reassigByUser', 'cases/cases_ToReassignByUserList', $oCriteria, Array ('FROM_USR_UID' => $sUserToReassign

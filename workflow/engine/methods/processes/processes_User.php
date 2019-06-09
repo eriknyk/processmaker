@@ -42,7 +42,7 @@ try {
     $oProcessMap = new ProcessMap();
     $c = $oProcessMap->listProcessesUser( $sProUid );
 
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
     $oHeadPublisher->addScriptFile( '/jscore/processmap/core/processUser.js' );
 
     $G_PUBLISH = new Publisher();

@@ -533,7 +533,7 @@ require_once $pathFile;
 
 // Create headPublisher singleton
 //Bootstrap::LoadSystem( 'headPublisher' );
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 
 // Installer, redirect to install if we don't have a valid shared data folder
 if (! defined( 'PATH_DATA' ) || ! file_exists( PATH_DATA )) {

@@ -109,7 +109,7 @@ $G_ID_SUB_MENU_SELECTED = 'PLUGINS';
 
 $G_PUBLISH = new Publisher();
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptFile( '/jscore/setup/pluginList.js' );
 
 $G_PUBLISH->AddContent( 'propeltable', 'paged-table', 'setup/pluginList', $c );

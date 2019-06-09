@@ -132,7 +132,7 @@ $config = $defaultConfig;
 
 $G_PUBLISH = new Publisher();
 $G_PUBLISH->publisherId = 'dynaformEditor';
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->setTitle( "Dynaform Editor" );
 
 //$G_PUBLISH->AddContent('pagedtable', 'paged-table', 'dynaforms/fields_ShortList', '', $Parameters , '', SYS_URI.'dynaforms/dynaforms_PagedTableAjax');

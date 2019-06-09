@@ -51,7 +51,7 @@ $G_ID_MENU_SELECTED = 'SETUP';
 $G_ID_SUB_MENU_SELECTED = 'LOGO';
 
 $G_PUBLISH = new Publisher();
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $G_PUBLISH->AddContent( 'xmlform', 'xmlform', 'setup/uplogo', '', $Fields );
 
 $G_PUBLISH->AddContent( 'view', 'setup/uplogo' );

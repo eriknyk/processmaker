@@ -78,7 +78,7 @@ $G_MAIN_MENU = 'processmaker';
 $G_SUB_MENU = 'caseOptions';
 $G_ID_MENU_SELECTED = 'CASES';
 $G_ID_SUB_MENU_SELECTED = '_';
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptCode( "
 if (typeof parent != 'undefined') {
   if (parent.showCaseNavigatorPanel) {
@@ -96,7 +96,7 @@ $oHeadPublisher->addScriptCode( '
       leimnud.Package.Load("processmap",{Type:"file",Absolute:true,Path:"/jscore/processmap/core/processmap.js"});
       leimnud.exec(leimnud.fix.memoryLeak);
     ' );
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addScriptFile( '/jscore/cases/core/cases_Step.js' );
 
 $Fields['isIE'] = Bootstrap::isIE();

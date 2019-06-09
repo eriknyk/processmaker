@@ -32,7 +32,7 @@ $languageManagement = 0;
 
 $arraySystemConfiguration = System::getSystemConfiguration('', '', SYS_SYS);
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addExtJsScript( 'users/users', true ); //adding a javascript file .js
 $oHeadPublisher->assign('USR_UID', '');
 $oHeadPublisher->assign('MODE', $_GET['MODE']);

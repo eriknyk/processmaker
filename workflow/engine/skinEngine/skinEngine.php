@@ -204,7 +204,7 @@ class SkinEngine
     G::verifyPath ( PATH_SMARTY_CACHE, true );
 
     $smarty = new Smarty();
-    $oHeadPublisher =& headPublisher::getSingleton();
+    $oHeadPublisher = headPublisher::getSingleton();
 
     $smarty->template_dir = $this->layoutFileRaw['dirname'];
     $smarty->compile_dir  = PATH_SMARTY_C;
@@ -222,7 +222,7 @@ class SkinEngine
 
   private function _plain()
   {
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
     echo $oHeadPublisher->renderExtJs();
   }
 
@@ -230,7 +230,7 @@ class SkinEngine
   {
     G::LoadClass('serverConfiguration');
     $oServerConf    =& serverConf::getSingleton();
-    $oHeadPublisher =& headPublisher::getSingleton();
+    $oHeadPublisher = headPublisher::getSingleton();
 
     if( $oHeadPublisher->extJsInit === true){
       $header = $oHeadPublisher->getExtJsVariablesScript();
@@ -328,7 +328,7 @@ class SkinEngine
     G::verifyPath(PATH_SMARTY_CACHE, true);
 
     $smarty = new Smarty();
-    $oHeadPublisher =& headPublisher::getSingleton();
+    $oHeadPublisher = headPublisher::getSingleton();
 
     $smarty->template_dir = $this->layoutFileBlank['dirname'];
     $smarty->compile_dir  = PATH_SMARTY_C;
@@ -364,7 +364,7 @@ class SkinEngine
     G::verifyPath(PATH_SMARTY_CACHE, true);
 
     $smarty = new Smarty();
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
 
     $smarty->template_dir = $this->layoutFileSubmenu['dirname'];
     $smarty->compile_dir  = PATH_SMARTY_C;
@@ -477,7 +477,7 @@ class SkinEngine
     G::verifyPath ( PATH_SMARTY_CACHE, true );
 
     $smarty = new Smarty();
-    $oHeadPublisher =& headPublisher::getSingleton();
+    $oHeadPublisher = headPublisher::getSingleton();
 
     $smarty->template_dir = PATH_SKINS;
     $smarty->compile_dir  = PATH_SMARTY_C;
@@ -559,7 +559,7 @@ class SkinEngine
     require_once PATH_GULLIVER_HOME . 'includes' . PATH_SEP . 'smarty_plugins' . PATH_SEP . 'function.pmos.php';
     G::LoadClass('serverConfiguration');
     $oServerConf =& serverConf::getSingleton();
-    $oHeadPublisher =& headPublisher::getSingleton();
+    $oHeadPublisher = headPublisher::getSingleton();
 
     $smarty = new Smarty();
 
@@ -644,7 +644,7 @@ class SkinEngine
     G::verifyPath(PATH_SMARTY_CACHE, true);
 
     $smarty = new Smarty();
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
 
     $smarty->compile_dir = PATH_SMARTY_C;
     $smarty->cache_dir = PATH_SMARTY_CACHE;

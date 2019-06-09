@@ -274,7 +274,7 @@ class Ajax
         $oTemplatePower->prepare();
         $G_PUBLISH = new Publisher();
         $G_PUBLISH->AddContent('template', '', '', '', $oTemplatePower);
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
 
         //$oHeadPublisher->addScriptfile('/jscore/processmap/core/processmap.js');
         $oHeadPublisher->addScriptCode('
@@ -414,7 +414,7 @@ class Ajax
         global $G_PUBLISH;
         G::loadClass('configuration');
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $conf = new Configurations();
         $oHeadPublisher->addExtJsScript('cases/caseHistory', true); //adding a javascript file .js
         $oHeadPublisher->addContent('cases/caseHistory'); //adding a html file  .html.
@@ -427,7 +427,7 @@ class Ajax
         global $G_PUBLISH;
         G::loadClass('configuration');
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $conf = new Configurations();
         $oHeadPublisher->addExtJsScript('cases/caseMessageHistory', true); //adding a javascript file .js
         $oHeadPublisher->addContent('cases/caseMessageHistory'); //adding a html file  .html.
@@ -440,7 +440,7 @@ class Ajax
         global $G_PUBLISH;
         G::loadClass('configuration');
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $conf = new Configurations();
         $oHeadPublisher->addExtJsScript('cases/caseHistoryDynaformPage', true); //adding a javascript file .js
         $oHeadPublisher->addContent('cases/caseHistoryDynaformPage'); //adding a html file  .html.
@@ -459,7 +459,7 @@ class Ajax
             $_SESSION['TASK']
         );
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $conf = new Configurations();
         $oHeadPublisher->addExtJsScript('cases/caseChangeLog', true); //adding a javascript file .js
         $oHeadPublisher->addContent('cases/caseChangeLog'); //adding a html file  .html.
@@ -479,7 +479,7 @@ class Ajax
         global $G_PUBLISH;
         G::loadClass('configuration');
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $conf = new Configurations();
         $oHeadPublisher->addExtJsScript('cases/casesUploadedDocumentsPage', true); //adding a javascript file .js
         $oHeadPublisher->addContent('cases/casesUploadedDocumentsPage'); //adding a html file  .html.
@@ -493,7 +493,7 @@ class Ajax
         global $G_PUBLISH;
         G::loadClass('configuration');
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $conf = new Configurations();
         $oHeadPublisher->addExtJsScript('cases/casesUploadedDocumentsPage', true); //adding a javascript file .js
         $oHeadPublisher->addContent('cases/casesUploadedDocumentsPage'); //adding a html file  .html.
@@ -507,7 +507,7 @@ class Ajax
         global $G_PUBLISH;
         G::loadClass('configuration');
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $conf = new Configurations();
         $oHeadPublisher->addExtJsScript('cases/casesGenerateDocumentPage', true); //adding a javascript file .js
         $oHeadPublisher->addContent('cases/casesGenerateDocumentPage'); //adding a html file  .html.
@@ -521,7 +521,7 @@ class Ajax
         global $G_PUBLISH;
         G::loadClass('configuration');
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $conf = new Configurations();
         $oHeadPublisher->addExtJsScript('cases/casesGenerateDocumentPage', true); //adding a javascript file .js
         $oHeadPublisher->addContent('cases/casesGenerateDocumentPage'); //adding a html file  .html.

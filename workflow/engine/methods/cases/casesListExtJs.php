@@ -18,7 +18,7 @@ if ($action == 'selfservice') {
 G::LoadClass("BasePeer");
 G::LoadClass("configuration");
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 // oHeadPublisher->setExtSkin( 'xtheme-blue');
 //get the configuration for this action
 $conf = new Configurations();

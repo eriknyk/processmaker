@@ -5,7 +5,7 @@ $RBAC->requirePermissions( 'PM_SETUP' );
 //  header('Cache-Control: no-store, no-cache, must-revalidate');
 
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 //$oHeadPublisher->setExtSkin( 'xtheme-blue');
 
 

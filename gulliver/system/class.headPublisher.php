@@ -94,7 +94,7 @@ class headPublisher
         $this->addScriptCode(' var __usernameLogged__ = "' . (isset($_SESSION['USR_USERNAME']) ? $_SESSION['USR_USERNAME'] : '') . '";var SYS_LANG = "' . SYS_LANG . '";');
     }
 
-    public function &getSingleton()
+    public static function getSingleton()
     {
         if (self::$instance == null) {
             self::$instance = new headPublisher();

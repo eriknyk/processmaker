@@ -26,7 +26,7 @@
   */
 
 $G_PUBLISH = new Publisher();
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $G_PUBLISH->AddContent( 'view', 'dynaforms/fieldsHandlerViewer' );
 G::RenderPage( "publish", "raw" );
 

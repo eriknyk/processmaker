@@ -93,7 +93,7 @@ $users["USR_AUTH_SOURCE"] = (isset($arrayAuthSources[$_GET["uUID"]]))? $arrayAut
 $users["fullNameFormat"]  = $Config["fullNameFormat"];
 $users["CURRENT_TAB"] = $ctab;
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addExtJsScript( 'users/usersGroups', false ); //adding a javascript file .js
 // $oHeadPublisher->addContent('users/usersGroups'); //adding a html file  .html.
 $oHeadPublisher->assign( 'USERS', $users );

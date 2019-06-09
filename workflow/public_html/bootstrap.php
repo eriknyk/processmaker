@@ -272,7 +272,7 @@
 
   // Create headPublisher singleton
   G::LoadSystem('headPublisher');
-  $oHeadPublisher =& headPublisher::getSingleton();
+  $oHeadPublisher = headPublisher::getSingleton();
 
   //Load filter class
   G::LoadSystem('inputfilter');

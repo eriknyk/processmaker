@@ -80,7 +80,7 @@ switch ($_GET['CTO_TYPE_OBJ']) {
         $oCase = new Cases();
         $c = $oCase->getAllUploadedDocumentsCriteriaTracker( $_SESSION['PROCESS'], $_SESSION['APPLICATION'], $_GET['CTO_UID_OBJ'] );
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addScriptFile( '/jscore/tracker/tracker.js' );
 
         $G_PUBLISH = new Publisher();
@@ -93,7 +93,7 @@ switch ($_GET['CTO_TYPE_OBJ']) {
         $oCase = new Cases();
         $c = $oCase->getAllGeneratedDocumentsCriteriaTracker( $_SESSION['PROCESS'], $_SESSION['APPLICATION'], $_GET['CTO_UID_OBJ'] );
 
-        $oHeadPublisher = & headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addScriptFile( '/jscore/tracker/tracker.js' );
 
         $G_PUBLISH = new Publisher();

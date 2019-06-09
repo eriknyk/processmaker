@@ -69,7 +69,7 @@ try {
     else
         $aMessage['THEMESSAGE4'] = implode( "\n", $oSystem->aErrors );
 
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
     if (file_exists( PATH_CORE . 'js' . PATH_SEP . 'setup' . PATH_SEP . 'upgrade_System.js' )) {
         $oHeadPublisher->addScriptFile( '/jscore/setup/upgrade_System.js' );
     } else {

@@ -4599,7 +4599,7 @@ class processMap
         try {
             global $G_PUBLISH;
             $G_PUBLISH = new Publisher();
-            $oHeadPublisher = & headPublisher::getSingleton();
+            $oHeadPublisher =  headPublisher::getSingleton();
             $oHeadPublisher->addScriptFile('/jscore/events/events.js');
 
             switch ($type) {

@@ -70,7 +70,7 @@ G::LoadClass( "case" );
 $oCase = new Cases();
 $conf = new Configurations();
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 
 $urlToRedirectAfterPause = 'casesListExtJs';
 

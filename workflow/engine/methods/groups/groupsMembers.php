@@ -54,7 +54,7 @@ $G_ID_SUB_MENU_SELECTED = 'GROUPS';
 
 $G_PUBLISH = new Publisher();
 
-$oHeadPublisher = & headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 
 $oHeadPublisher->addExtJsScript( 'groups/groupsMembers', false ); //adding a javascript file .js
 $oHeadPublisher->addContent( 'groups/groupsMembers' ); //adding a html file  .html.

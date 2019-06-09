@@ -35,7 +35,7 @@ if ($_GET['NAVIGATOR'] == 'ie') {
 
     $_SESSION['processes_upload'] = $params;
     $G_PUBLISH = new Publisher();
-    $oHeadPublisher = & headPublisher::getSingleton();
+    $oHeadPublisher =  headPublisher::getSingleton();
     $G_PUBLISH->AddContent( 'view', 'processes/processes_Upload' );
     G::RenderPage( "publish", "raw" );
 }
