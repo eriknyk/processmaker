@@ -2946,7 +2946,7 @@ class Bootstrap
     {
         $fileLog = $pathData .'sites'. PATH_SEP . $ws . PATH_SEP . 'log' . PATH_SEP . $file;
 
-        $registerLogger = &MonologProvider::getSingleton($channel, $fileLog);
+        $registerLogger = MonologProvider::getSingleton($channel, $fileLog);
         $registerLogger->addLog($level, $message, $context);
     }
 

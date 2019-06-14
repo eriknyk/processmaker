@@ -9,14 +9,14 @@ switch ($option) {
         phpinfo(INFO_GENERAL + INFO_CREDITS + INFO_CONFIGURATION + INFO_MODULES + INFO_ENVIRONMENT + INFO_VARIABLES);
         break;
     case "php":
-        $oHeadPublisher = &headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addContent("setup/phpInfo"); //Adding a html file .html
         $oHeadPublisher->addExtJsScript("setup/phpInfo", false); //Adding a javascript file .js
 
         G::RenderPage("publish", "extJs");
         break;
     case "processInfo":
-        $oHeadPublisher = &headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->assign('skin', $_SESSION['currentSkin']);
         $oHeadPublisher->addContent("setup/dbInfo"); //Adding a html file .html
         $oHeadPublisher->addExtJsScript("setup/dbInfo", false); //Adding a javascript file .js
@@ -30,7 +30,7 @@ switch ($option) {
 
         $systemInfo = $installer->getSystemInfo();
 
-        $oHeadPublisher = &headPublisher::getSingleton();
+        $oHeadPublisher =  headPublisher::getSingleton();
         $oHeadPublisher->addContent("setup/systemInfo"); //Adding a html file .html
         $oHeadPublisher->addExtJsScript("setup/systemInfo", false); //Adding a javascript file .js
 

@@ -177,8 +177,8 @@ class Controller
             $this->__request__ = new stdclass();
         }
         if (is_array( $data )) {
-            while ($var = each( $data )) {
-                $this->__request__->$var['key'] = $var['value'];
+            foreach ($data as $key => $value) {
+                $this->__request__->$key = $value;
             }
         } else {
             $this->__request__ = $data;

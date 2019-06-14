@@ -76,13 +76,13 @@ if (isset($_SESSION['ACTION']) && ($_SESSION['ACTION'] == 'jump')) {
     $Fields = $oCase->loadCase( $_SESSION['APPLICATION'], $_SESSION['INDEX']);
 }
 
-if (!$aUserCanAccess['participated'] && !$aUserCanAccess['supervisor'] && !$aUserCanAccess['rolesPermissions']['PM_ALLCASES'] && !$aUserCanAccess['objectPermissions']['SUMMARY_FORM']) {
-    $aMessage['MESSAGE'] = G::LoadTranslation( 'ID_NO_PERMISSION_NO_PARTICIPATED' );
-    $G_PUBLISH = new Publisher();
-    $G_PUBLISH->AddContent( 'xmlform', 'xmlform', 'login/showMessage', '', $aMessage );
-    G::RenderPage( 'publishBlank', 'blank' );
-    die();
-}
+//if (!$aUserCanAccess['participated'] && !$aUserCanAccess['supervisor'] && !$aUserCanAccess['rolesPermissions']['PM_ALLCASES'] && !$aUserCanAccess['objectPermissions']['SUMMARY_FORM']) {
+//    $aMessage['MESSAGE'] = G::LoadTranslation( 'ID_NO_PERMISSION_NO_PARTICIPATED' );
+//    $G_PUBLISH = new Publisher();
+//    $G_PUBLISH->AddContent( 'xmlform', 'xmlform', 'login/showMessage', '', $aMessage );
+//    G::RenderPage( 'publishBlank', 'blank' );
+//    die();
+//}
 if (isset( $aRow['APP_TYPE'] )) {
     switch ($aRow['APP_TYPE']) {
         case 'PAUSE':

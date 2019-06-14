@@ -36,7 +36,7 @@ if (isset( $_REQUEST["s"] )) {
 }
 
 ///////
-$oHeadPublisher = &headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 
 global $G_TMP_MENU;
 

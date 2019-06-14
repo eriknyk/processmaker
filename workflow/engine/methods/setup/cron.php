@@ -81,7 +81,7 @@ $arrayStatus = array (array ("ALL",G::LoadTranslation( "ID_ALL" )
 )
 );
 
-$oHeadPublisher = &headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addContent( "setup/cron" ); //Adding a html file .html
 $oHeadPublisher->addExtJsScript( "setup/cron", false ); //Adding a javascript file .js
 $oHeadPublisher->assign( "CONFIG", $config );

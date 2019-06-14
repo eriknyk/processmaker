@@ -692,7 +692,7 @@ try {
             }
             $fcontent = file_get_contents($sDirectory);
             $extion = explode(".", $_REQUEST['filename']);
-            //            $oHeadPublisher = &headPublisher::getSingleton();
+            //            $oHeadPublisher =  headPublisher::getSingleton();
             //            $oHeadPublisher->clearScripts();
             //            $oHeadPublisher->addScriptFile( '/js/tinymce/jscripts/tiny_mce/tiny_mce.js' );
             //            $jscriptCode .= '

@@ -26,7 +26,7 @@ G::LoadClass( "configuration" );
 
 $conf = new Configurations();
 
-$oHeadPublisher = &headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 $oHeadPublisher->addExtJsScript( "cases/main", false ); //Adding a javascript file .js
 $oHeadPublisher->addContent( "cases/main" ); //Adding a html file  .html.
 

@@ -8,7 +8,7 @@ if ($RBAC->userCanAccess("PM_SETUP") != 1 || $RBAC->userCanAccess("PM_SETUP_ADVA
 
 $availableFields = array();
 
-$oHeadPublisher = &headPublisher::getSingleton();
+$oHeadPublisher =  headPublisher::getSingleton();
 
 $oHeadPublisher->addExtJsScript( 'cases/casesListSetup', false ); //adding a javascript file .js
 $oHeadPublisher->addContent( 'cases/casesListSetup' ); //adding a html file  .html.

@@ -2,7 +2,7 @@
 $config = array();
 $config["pageSize"] = 20;
 
-$headPublisher = &headPublisher::getSingleton();
+$headPublisher =  headPublisher::getSingleton();
 //$headPublisher->addContent("oauth2" . PATH_SEP . "clientSetup"); //Adding a HTML file .html
 $headPublisher->addExtJsScript("oauth2" . PATH_SEP . "clientSetup", false); //Adding a JavaScript file .js
 $headPublisher->assign("CONFIG", $config);
